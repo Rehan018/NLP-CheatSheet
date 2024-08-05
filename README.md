@@ -520,3 +520,140 @@ rows = info_box.find_all('tr')
 for row in rows:
     print(row.text.strip())
 ```
+
+
+```
+Fifth Phase
+```
+
+### **Information Extraction Using Regular Expressions**
+
+**1. Context:**
+   - This segment discusses how to retrieve key personal information from text, similar to what Google does using multiple sources (like Wikipedia).
+
+**2. Key Information Extraction Tasks:**
+   - Extract age, name, birthplace, and birthdate of a person from a structured text format.
+
+---
+
+### **Key Concepts in Regular Expressions:**
+
+**1. Extracting Age:**
+   - **Pattern for Age:**
+     - The pattern follows the format: `age <space> <number>`.
+     - Use the regex pattern:
+       ```regex
+       age\s+(\d+)
+       ```
+     - Explanation:
+       - `age`: matches the literal word "age".
+       - `\s+`: matches one or more whitespace characters.
+       - `(\d+)`: captures one or more digits, which represents the age.
+
+### **Example Python Code to Extract Age:**
+```python
+import re
+
+def extract_age(text):
+    age_pattern = r'age\s+(\d+)'
+    match = re.search(age_pattern, text)
+    return int(match.group(1)) if match else None
+
+text = "Elon Musk, age 53, is a billionaire."
+age = extract_age(text)
+print("Extracted Age:", age)
+```
+
+---
+
+**2. Extracting Name:**
+   - **Pattern for Name:**
+     - Names often follow the word "born".
+     - Use the regex pattern:
+       ```regex
+       born\s+(.+)
+       ```
+     - Explanation:
+       - `born`: matches the literal word "born".
+       - `\s+`: matches one or more whitespace characters.
+       - `(.+)`: captures any characters following "born" until the end of the line.
+
+### **Example Python Code to Extract Name:**
+```python
+def extract_name(text):
+    name_pattern = r'born\s+(.+)'
+    match = re.search(name_pattern, text)
+    return match.group(1).strip() if match else None
+
+text = "Elon Musk was born in 1971."
+name = extract_name(text)
+print("Extracted Name:", name)
+```
+
+**3. Extracting Birthdate:**
+   - **Pattern for Birthdate:**
+     - Birthdate follows after the age line.
+     - Use the regex pattern:
+       ```regex
+       born\s+\d+\s+\(.*?\)\s+(\w+\s+\d+,\s+\d+)
+       ```
+     - Explanation:
+       - This pattern matches the birthdate format like "June 28, 1971".
+
+### **Example Python Code to Extract Birthdate:**
+```python
+def extract_birthdate(text):
+    birthdate_pattern = r'born\s+\d+\s+\(.*?\)\s+(\w+\s+\d+,\s+\d+)'
+    match = re.search(birthdate_pattern, text)
+    return match.group(1) if match else None
+
+text = "Elon Musk was born on June 28, 1971."
+birthdate = extract_birthdate(text)
+print("Extracted Birthdate:", birthdate)
+```
+
+---
+
+**4. Extracting Birthplace:**
+   - **Pattern for Birthplace:**
+     - Birthplace often follows the birthdate.
+     - Use the regex pattern:
+       ```regex
+       age\s+\d+\s+\n(.+)
+       ```
+     - Explanation:
+       - This pattern captures the line immediately following the age line.
+
+### **Example Python Code to Extract Birthplace:**
+```python
+def extract_birthplace(text):
+    birthplace_pattern = r'age\s+\d+\s+\n(.+)'
+    match = re.search(birthplace_pattern, text)
+    return match.group(1).strip() if match else None
+
+text = "Elon Musk, age 53, was born in Pretoria, South Africa."
+birthplace = extract_birthplace(text)
+print("Extracted Birthplace:", birthplace)
+```
+
+---
+
+### **Combining Extraction Functions:**
+- Create a function that combines all the extraction functionalities into a single dictionary for easy access.
+
+### **Example Combined Function:**
+```python
+def extract_personal_info(text):
+    return {
+        'age': extract_age(text),
+        'name': extract_name(text),
+        'birthdate': extract_birthdate(text),
+        'birthplace': extract_birthplace(text)
+    }
+
+text = """
+Elon Musk, age 53, was born on June 28, 1971, in Pretoria, South Africa.
+"""
+personal_info = extract_personal_info(text)
+print("Extracted Personal Information:", personal_info)
+```
