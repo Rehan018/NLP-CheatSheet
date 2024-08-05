@@ -432,3 +432,91 @@ print("Extracted Dates:", dates)
 - **Import `re`**: The regex library in Python.
 - **Define `extract_information` function**: This function takes a text string as input and uses `re.findall` to extract all matching URLs and dates based on the defined patterns.
 - **Example Usage**: A sample text is provided to demonstrate how the function works, and it prints the extracted URLs and dates.
+
+
+```
+Forth Phase
+```
+
+### **Extracting Information with Regular Expressions**
+
+**1. Extracting Email Addresses:**
+   - **Valid Characters in Emails:**
+     - Small letters (a-z), capital letters (A-Z), numbers (0-9), and underscores (_).
+   - **Email Pattern Construction:**
+     - Use ranges to specify valid characters.
+     - The regex pattern for emails can look like this:
+       ```regex
+       [a-zA-Z0-9._]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}
+       ```
+   - **Special Characters:**
+     - `.` has a special meaning in regex (matches any character). To match a literal dot, use `\.`.
+
+### **Example Python Code to Extract Email Addresses:**
+```python
+import re
+
+# Sample text containing email addresses
+text = "You can contact me at john.doe@example.com or jane_doe123@gmail.com."
+
+# Regular expression pattern for emails
+email_pattern = r'[a-zA-Z0-9._]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}'
+
+# Extracting email addresses
+emails = re.findall(email_pattern, text)
+
+# Display results
+print("Extracted Email Addresses:", emails)
+```
+
+**2. Extracting Order Numbers:**
+   - **Order Number Patterns:**
+     - Extract phrases like "my order number is 12345" or "order number 98765".
+   - **Regex Construction:**
+     - Match the word "order", followed by any non-digit characters, and then capture the sequence of digits.
+     - Example pattern:
+       ```regex
+       order[^0-9]*([\d]+)
+       ```
+     - `[^0-9]*` matches any character that is not a digit, and `([\d]+)` captures the order number.
+
+### **Example Python Code to Extract Order Numbers:**
+```python
+# Sample text containing order numbers
+text_with_orders = "My order number is 12345. Also, order number: 98765."
+
+# Regular expression pattern for order numbers
+order_pattern = r'order[^0-9]*([\d]+)'
+
+# Extracting order numbers
+order_numbers = re.findall(order_pattern, text_with_orders)
+
+# Display results
+print("Extracted Order Numbers:", order_numbers)
+```
+
+**3. Information Extraction from Websites:**
+   - **Using Wikipedia:**
+     - You can extract key information by scraping or parsing Wikipedia pages.
+   - **Key Steps:**
+     1. Use libraries like `requests` to fetch the page content.
+     2. Use `BeautifulSoup` for parsing the HTML.
+     3. Apply regex patterns to extract specific information, like names, dates, or facts.
+
+### **Example Code to Scrape Wikipedia:**
+```python
+import requests
+from bs4 import BeautifulSoup
+
+# Fetching the Wikipedia page
+response = requests.get('https://en.wikipedia.org/wiki/Elon_Musk')
+soup = BeautifulSoup(response.text, 'html.parser')
+
+# Extracting key information
+info_box = soup.find('table', class_='infobox')
+rows = info_box.find_all('tr')
+
+# Displaying the extracted information
+for row in rows:
+    print(row.text.strip())
+```
