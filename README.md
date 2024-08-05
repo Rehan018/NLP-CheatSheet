@@ -149,3 +149,153 @@ for text in address_texts:
 
 ### Output
 This will print the extracted dates and addresses based on the given patterns and sample texts.
+
+
+
+```
+Second Phase
+```
+
+### **Setting Up the Environment for NLP Coding**
+
+**1. Command Prompt Setup:**
+   - **Windows:** You can use Windows Command Prompt or Git Bash for running commands.
+   - **Linux:** Ubuntu users can use the default command prompt without additional installations.
+
+**2. Prerequisites:**
+   - **Jupyter Notebook:** Learn how to use Jupyter Notebook for writing Python code.
+     - **Recommendation:** Search for "Code Basics Jupyter Notebook Tutorial" on YouTube for guidance.
+   - **Python Knowledge:** Follow the first 14 videos from the Code Basics Python tutorial playlist to understand Python fundamentals.
+   - **Regular Expressions Knowledge:** Review the Code Basics Regular Expression video to get acquainted with regex.
+
+**3. Creating a Directory:**
+   - **Navigate to the Directory:** Create a directory called `nlp_tutorials` and navigate to it using Git Bash or your command prompt.
+   - **Launch Jupyter Notebook:** 
+     - Open Git Bash and run the command `jupyter notebook` to start the Jupyter environment.
+   - **Create a New Python File:** Create a new file (e.g., `regex_tutorial_nlp.py`) for your regex tutorial.
+
+### **Using Regular Expressions in Python:**
+**1. Importing the Regex Module:**
+   - In your Python file, import the `re` module, which is built into Python for handling regular expressions.
+   ```python
+   import re
+   ```
+
+**2. Testing Regular Expressions:**
+   - Use the website [regex101.com](https://regex101.com) to test and refine your regular expressions before using them in your Python code.
+
+### **Extracting Phone Numbers:**
+**1. Phone Number Patterns:**
+   - **Pattern 1:** Continuous sequence of 10 digits (e.g., `1234567890`).
+   - **Pattern 2:** Formatted as `(123)-456-7890`.
+
+**2. Regular Expression for Phone Numbers:**
+   - You can use the following regex patterns for the two formats:
+     - Continuous 10 digits: `\d{10}`
+     - Bracketed format: `\(\d{3}\)-\d{3}-\d{4}`
+
+### **Example Python Code to Extract Phone Numbers:**
+```python
+import re
+
+# Sample text containing phone numbers
+text = """
+You can reach me at (123)-456-7890 or call my alternate number 9876543210.
+"""
+
+# Regular expression patterns
+pattern1 = r'\d{10}'  # Continuous 10 digits
+pattern2 = r'\(\d{3}\)-\d{3}-\d{4}'  # Bracketed format
+
+# Extracting phone numbers
+continuous_numbers = re.findall(pattern1, text)
+bracketed_numbers = re.findall(pattern2, text)
+
+# Display results
+print("Extracted Continuous Phone Numbers:", continuous_numbers)
+print("Extracted Bracketed Phone Numbers:", bracketed_numbers)
+```
+
+### **Extracting Email Addresses:**
+**1. Email Pattern:**
+   - **Regular Expression for Email:** A basic pattern could be `\w+@\w+\.\w+`.
+
+### **Example Python Code to Extract Email Addresses:**
+```python
+# Sample text containing email addresses
+text_with_emails = "Contact me at john.doe@example.com or jane_doe123@gmail.com."
+
+# Regular expression pattern for emails
+email_pattern = r'\w+@\w+\.\w+'
+
+# Extracting email addresses
+emails = re.findall(email_pattern, text_with_emails)
+
+# Display results
+print("Extracted Email Addresses:", emails)
+```
+
+### **Exercise for Viewers:**
+- **Task:** Write regex patterns to extract additional information, such as dates in the format `MM/DD/YYYY`, from a given text sample. Test your patterns using regex101.com and implement them in your Python code.
+
+### Regex Pattern for Dates in MM/DD/YYYY Format
+
+#### Regular Expression
+```regex
+\b(0[1-9]|1[0-2])/(0[1-9]|[12][0-9]|3[01])/\d{4}\b
+```
+
+- **Explanation**:
+  - `\b`: Asserts a word boundary to ensure we match whole words.
+  - `(0[1-9]|1[0-2])`: Matches the month part, allowing for `01` to `12`.
+  - `/`: Matches the literal forward slash.
+  - `(0[1-9]|[12][0-9]|3[01])`: Matches the day part, allowing for `01` to `31`.
+  - `/`: Matches another literal forward slash.
+  - `\d{4}`: Matches the year part, which consists of four digits.
+  - `\b`: Another word boundary.
+
+### Testing the Pattern on regex101.com
+
+1. Go to [regex101.com](https://regex101.com/).
+2. Paste the regex pattern above in the "Regular Expression" field.
+3. In the "Test String" field, enter sample text, such as:
+   ```
+   Today's date is 08/05/2024. Tomorrow will be 08/06/2024. 
+   The deadline is 12/31/2024, but I can't remember 13/01/2024.
+   ```
+4. Verify that the matches highlight the correct dates.
+
+### Implementing in Python Code
+
+Here’s how to implement the regex in Python to extract dates in the `MM/DD/YYYY` format:
+
+```python
+import re
+
+# Sample text
+text = """
+Today's date is 08/05/2024. Tomorrow will be 08/06/2024. 
+The deadline is 12/31/2024, but I can't remember 13/01/2024.
+"""
+
+# Regex pattern for MM/DD/YYYY format
+date_pattern = r'\b(0[1-9]|1[0-2])/(0[1-9]|[12][0-9]|3[01])/\d{4}\b'
+
+# Extracting dates
+extracted_dates = re.findall(date_pattern, text)
+
+# Formatting the output
+formatted_dates = ['/'.join(date) for date in extracted_dates]
+
+# Print the extracted dates
+print("Extracted dates in MM/DD/YYYY format:", formatted_dates)
+```
+
+### Output
+Running the above code will print:
+```
+Extracted dates in MM/DD/YYYY format: ['08/05/2024', '08/06/2024', '12/31/2024']
+```
+
+
+
