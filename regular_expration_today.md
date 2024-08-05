@@ -62,11 +62,11 @@ print("Extracted Phone Number:", phone_number)
 print("Extracted Email Address:", email_address)
 ```
 
-### **Exercise for Viewers:**
+### **Problem:**
 - **Task:** Create your  regular expression patterns to extract additional information, such as dates or addresses from a sample text. Test your patterns with various user inputs.
   Here are some regular expression patterns for extracting dates and addresses from sample text, along with examples and explanations.
 
-### 1. Extracting Dates
+### Solution
 
 #### Regular Expression for Dates
 ```regex
@@ -213,9 +213,10 @@ emails = re.findall(email_pattern, text_with_emails)
 print("Extracted Email Addresses:", emails)
 ```
 
-### **Exercise for Viewers:**
+### **Problem:**
 - **Task:** Write regex patterns to extract additional information, such as dates in the format `MM/DD/YYYY`, from a given text sample. Test your patterns using regex101.com and implement them in your Python code.
 
+### Solution:
 ### Regex Pattern for Dates in MM/DD/YYYY Format
 
 #### Regular Expression
@@ -345,9 +346,10 @@ complex_emails = re.findall(complex_email_pattern, complex_email_text)
 print("Extracted Complex Email Addresses:", complex_emails)
 ```
 
-### **Exercise for Viewers:**
+### **Problem:**
 - **Task:** Create regex patterns to extract additional information such as URLs or dates from a provided text. Test and refine your patterns using regex101.com and implement them in your Python code.
 
+### **Solution**
 ### Regex Patterns
 
 1. **URL Pattern**:
