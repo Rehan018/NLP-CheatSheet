@@ -47,21 +47,16 @@
 ### **Sample Python Code to Extract Information:**
 ```python
 import re
-
-# Sample user input
 user_input = "I'm having an issue with my order number #123456. Here's my phone number (123)-456-7890 and email john.doe@example.com."
-
-# Patterns
 order_pattern = r'order\s*#?\s*(\d+)'
 phone_pattern = r'\(\d{3}\)-\d{3}-\d{4}'
 email_pattern = r'(\w+@\w+\.\w+)'
 
-# Extracting information
+
 order_number = re.findall(order_pattern, user_input)
 phone_number = re.findall(phone_pattern, user_input)
 email_address = re.findall(email_pattern, user_input)
 
-# Display results
 print("Extracted Order Number:", order_number)
 print("Extracted Phone Number:", phone_number)
 print("Extracted Email Address:", email_address)
@@ -114,34 +109,24 @@ print("Extracted Email Address:", email_address)
 
 ```python
 import re
-
-# Sample text for dates
 date_texts = [
     "Today is 05-08-2024.",
     "The event is scheduled for August 5, 2024.",
     "I was born on 12/01/99."
 ]
-
-# Date regex pattern
 date_pattern = r'\b(\d{1,2}[-/]\d{1,2}[-/]\d{2,4}|\w{3,9} \d{1,2}, \d{4})\b'
-
-# Extracting dates
 for text in date_texts:
     dates = re.findall(date_pattern, text)
     print(f"Extracted dates from '{text}': {dates}")
 
-
-# Sample text for addresses
 address_texts = [
     "I live at 123 Main St. 90210.",
     "Send the package to 456 Elm Avenue 12345.",
     "Her office is located at 789 Broadway Blvd, New York, NY 10001."
 ]
-
-# Address regex pattern
 address_pattern = r'\d+\s[A-Za-z0-9\s,.-]+(?:St|Ave|Blvd|Rd|Ln|Dr|Ct|Terr|Way|Pl|Pkwy)\.?\s*\d{5}'
 
-# Extracting addresses
+
 for text in address_texts:
     addresses = re.findall(address_pattern, text)
     print(f"Extracted addresses from '{text}': {addresses}")
@@ -198,20 +183,16 @@ Second Phase
 ```python
 import re
 
-# Sample text containing phone numbers
+
 text = """
 You can reach me at (123)-456-7890 or call my alternate number 9876543210.
 """
-
-# Regular expression patterns
 pattern1 = r'\d{10}'  # Continuous 10 digits
 pattern2 = r'\(\d{3}\)-\d{3}-\d{4}'  # Bracketed format
 
-# Extracting phone numbers
 continuous_numbers = re.findall(pattern1, text)
 bracketed_numbers = re.findall(pattern2, text)
-
-# Display results
+s
 print("Extracted Continuous Phone Numbers:", continuous_numbers)
 print("Extracted Bracketed Phone Numbers:", bracketed_numbers)
 ```
@@ -222,16 +203,13 @@ print("Extracted Bracketed Phone Numbers:", bracketed_numbers)
 
 ### **Example Python Code to Extract Email Addresses:**
 ```python
-# Sample text containing email addresses
+
 text_with_emails = "Contact me at john.doe@example.com or jane_doe123@gmail.com."
 
-# Regular expression pattern for emails
 email_pattern = r'\w+@\w+\.\w+'
 
-# Extracting email addresses
 emails = re.findall(email_pattern, text_with_emails)
 
-# Display results
 print("Extracted Email Addresses:", emails)
 ```
 
@@ -272,22 +250,17 @@ Here’s how to implement the regex in Python to extract dates in the `MM/DD/YYY
 ```python
 import re
 
-# Sample text
 text = """
 Today's date is 08/05/2024. Tomorrow will be 08/06/2024. 
 The deadline is 12/31/2024, but I can't remember 13/01/2024.
 """
 
-# Regex pattern for MM/DD/YYYY format
 date_pattern = r'\b(0[1-9]|1[0-2])/(0[1-9]|[12][0-9]|3[01])/\d{4}\b'
 
-# Extracting dates
 extracted_dates = re.findall(date_pattern, text)
 
-# Formatting the output
 formatted_dates = ['/'.join(date) for date in extracted_dates]
 
-# Print the extracted dates
 print("Extracted dates in MM/DD/YYYY format:", formatted_dates)
 ```
 
@@ -327,19 +300,14 @@ Third Phase
 ```python
 import re
 
-# Sample text containing phone numbers
 text = """
 Contact me at (123)-456-7890 or my other number 9876543210. 
 I can also be reached at 999-888-1234.
 """
-
-# Regular expression patterns
 pattern = r'\(\d{3}\)-\d{3}-\d{4}|\d{10}'
 
-# Extracting phone numbers
 phone_numbers = re.findall(pattern, text)
 
-# Display results
 print("Extracted Phone Numbers:", phone_numbers)
 ```
 
@@ -351,16 +319,14 @@ print("Extracted Phone Numbers:", phone_numbers)
 
 ### **Example Python Code to Extract Email Addresses:**
 ```python
-# Sample text containing email addresses
+
 text_with_emails = "You can contact me at john.doe@example.com or jane_doe123@gmail.com."
 
-# Regular expression pattern for emails
+
 email_pattern = r'\w+@\w+\.\w+'
 
-# Extracting email addresses
 emails = re.findall(email_pattern, text_with_emails)
 
-# Display results
 print("Extracted Email Addresses:", emails)
 ```
 
@@ -369,16 +335,13 @@ print("Extracted Email Addresses:", emails)
   - Example of a more complex email pattern: `r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}'`.
 - **Extraction Code:**
 ```python
-# Sample text with varied email formats
+
 complex_email_text = "Reach out to support123@domain.co or info@example.org."
 
-# Regex for complex email formats
 complex_email_pattern = r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}'
 
-# Extracting email addresses
 complex_emails = re.findall(complex_email_pattern, complex_email_text)
 
-# Display results
 print("Extracted Complex Email Addresses:", complex_emails)
 ```
 
@@ -407,17 +370,13 @@ You can test these regex patterns on [regex101.com](https://regex101.com/) to en
 import re
 
 def extract_information(text):
-    # Define regex patterns
     url_pattern = r'https?://[^\s/$.?#].[^\s]*'
     date_pattern = r'\b(?:\d{4}[-/]\d{1,2}[-/]\d{1,2}|\d{1,2}[/]\d{1,2}[/]\d{4}|\d{1,2}[-]\d{1,2}[-]\d{4})\b'
-
-    # Find all matches
     urls = re.findall(url_pattern, text)
     dates = re.findall(date_pattern, text)
 
     return urls, dates
 
-# Example usage
 sample_text = """
 Visit our website at https://www.example.com for more details.
 Key dates to remember: 2024-08-15, 12/09/2024, and 03-03-2024.
@@ -456,16 +415,12 @@ Forth Phase
 ```python
 import re
 
-# Sample text containing email addresses
 text = "You can contact me at john.doe@example.com or jane_doe123@gmail.com."
 
-# Regular expression pattern for emails
 email_pattern = r'[a-zA-Z0-9._]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}'
 
-# Extracting email addresses
 emails = re.findall(email_pattern, text)
 
-# Display results
 print("Extracted Email Addresses:", emails)
 ```
 
@@ -482,16 +437,12 @@ print("Extracted Email Addresses:", emails)
 
 ### **Example Python Code to Extract Order Numbers:**
 ```python
-# Sample text containing order numbers
 text_with_orders = "My order number is 12345. Also, order number: 98765."
 
-# Regular expression pattern for order numbers
 order_pattern = r'order[^0-9]*([\d]+)'
 
-# Extracting order numbers
 order_numbers = re.findall(order_pattern, text_with_orders)
 
-# Display results
 print("Extracted Order Numbers:", order_numbers)
 ```
 
@@ -507,16 +458,12 @@ print("Extracted Order Numbers:", order_numbers)
 ```python
 import requests
 from bs4 import BeautifulSoup
-
-# Fetching the Wikipedia page
 response = requests.get('https://en.wikipedia.org/wiki/Elon_Musk')
 soup = BeautifulSoup(response.text, 'html.parser')
 
-# Extracting key information
 info_box = soup.find('table', class_='infobox')
 rows = info_box.find_all('tr')
 
-# Displaying the extracted information
 for row in rows:
     print(row.text.strip())
 ```
