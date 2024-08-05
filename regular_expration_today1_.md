@@ -2,7 +2,7 @@
 
 
 
-### **Use Cases in NLP: Customer Service Chatbot and Information Extraction**
+### **Use Cases in NLP: Customer Service Chatbot and Information Extraction** - [Source Video](https://youtu.be/lK9gx4q_vfI?si=o0-qEuokP-3ltGtf)
 
 **1. Customer Service Chatbot:**
    - **Description:** Chatbots assist customers by retrieving order details or resolving issues based on user input.
