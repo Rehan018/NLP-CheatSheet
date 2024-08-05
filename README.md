@@ -298,4 +298,89 @@ Extracted dates in MM/DD/YYYY format: ['08/05/2024', '08/06/2024', '12/31/2024']
 ```
 
 
+```
+Third Phase
+```
 
+### **Using Regular Expressions for Phone Numbers and Email Addresses**
+
+**1. Understanding Regular Expressions:**
+   - **Matching Digits:**
+     - Use `\d` to match a single digit (0-9).
+     - To match multiple digits, use `{n}` where `n` is the number of digits you want to match.
+       - Example: `\d{10}` matches exactly 10 digits.
+   - **Matching Patterns:**
+     - `\d{3}` matches exactly three continuous digits.
+     - To extract sequences, use `re.findall()` to find all occurrences of the pattern in the text.
+
+### **Extracting Phone Numbers:**
+**1. Patterns for Phone Numbers:**
+   - **Continuous Digits:** 
+     - `\d{10}` for matching 10 consecutive digits.
+   - **Formatted Numbers:** 
+     - For the format `(123)-456-7890`, you need to escape the parentheses with a backslash: `\(\d{3}\)-\d{3}-\d{4}`.
+   - **Combining Patterns:**
+     - Use the pipe `|` symbol for an OR condition.
+     - Example: `r'\(\d{3}\)-\d{3}-\d{4}|\d{10}'` matches both formats.
+
+### **Example Python Code to Extract Phone Numbers:**
+```python
+import re
+
+# Sample text containing phone numbers
+text = """
+Contact me at (123)-456-7890 or my other number 9876543210. 
+I can also be reached at 999-888-1234.
+"""
+
+# Regular expression patterns
+pattern = r'\(\d{3}\)-\d{3}-\d{4}|\d{10}'
+
+# Extracting phone numbers
+phone_numbers = re.findall(pattern, text)
+
+# Display results
+print("Extracted Phone Numbers:", phone_numbers)
+```
+
+### **Extracting Email Addresses:**
+**1. Basic Pattern for Emails:**
+   - Email addresses generally follow the format `username@domain.extension`.
+   - A simple regex pattern to match basic email formats can be: `\w+@\w+\.\w+`.
+   - To make it more robust, include possible characters (letters, digits, underscores) before and after the `@` symbol.
+
+### **Example Python Code to Extract Email Addresses:**
+```python
+# Sample text containing email addresses
+text_with_emails = "You can contact me at john.doe@example.com or jane_doe123@gmail.com."
+
+# Regular expression pattern for emails
+email_pattern = r'\w+@\w+\.\w+'
+
+# Extracting email addresses
+emails = re.findall(email_pattern, text_with_emails)
+
+# Display results
+print("Extracted Email Addresses:", emails)
+```
+
+### **Creating More Complex Patterns:**
+- **Emails with Numbers:**
+  - Example of a more complex email pattern: `r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}'`.
+- **Extraction Code:**
+```python
+# Sample text with varied email formats
+complex_email_text = "Reach out to support123@domain.co or info@example.org."
+
+# Regex for complex email formats
+complex_email_pattern = r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}'
+
+# Extracting email addresses
+complex_emails = re.findall(complex_email_pattern, complex_email_text)
+
+# Display results
+print("Extracted Complex Email Addresses:", complex_emails)
+```
+
+### **Exercise for Viewers:**
+- **Task:** Create regex patterns to extract additional information such as URLs or dates from a provided text. Test and refine your patterns using regex101.com and implement them in your Python code.
