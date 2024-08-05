@@ -384,3 +384,51 @@ print("Extracted Complex Email Addresses:", complex_emails)
 
 ### **Exercise for Viewers:**
 - **Task:** Create regex patterns to extract additional information such as URLs or dates from a provided text. Test and refine your patterns using regex101.com and implement them in your Python code.
+
+### Regex Patterns
+
+1. **URL Pattern**:
+   ```regex
+   https?://[^\s/$.?#].[^\s]*
+   ```
+   - This pattern matches URLs starting with `http://` or `https://`, followed by any characters that do not include whitespace, making it a broad match for most URLs.
+
+2. **Date Pattern** (for formats like `YYYY-MM-DD`, `DD/MM/YYYY`, or `MM-DD-YYYY`):
+   ```regex
+   \b(?:\d{4}[-/]\d{1,2}[-/]\d{1,2}|\d{1,2}[/]\d{1,2}[/]\d{4}|\d{1,2}[-]\d{1,2}[-]\d{4})\b
+   ```
+   - This pattern matches dates in the formats `YYYY-MM-DD`, `DD/MM/YYYY`, and `MM-DD-YYYY`.
+
+### Testing Patterns
+You can test these regex patterns on [regex101.com](https://regex101.com/) to ensure they capture the intended matches. Paste your test text and the regex patterns to see what matches are found.
+
+### Python Implementation
+```python
+import re
+
+def extract_information(text):
+    # Define regex patterns
+    url_pattern = r'https?://[^\s/$.?#].[^\s]*'
+    date_pattern = r'\b(?:\d{4}[-/]\d{1,2}[-/]\d{1,2}|\d{1,2}[/]\d{1,2}[/]\d{4}|\d{1,2}[-]\d{1,2}[-]\d{4})\b'
+
+    # Find all matches
+    urls = re.findall(url_pattern, text)
+    dates = re.findall(date_pattern, text)
+
+    return urls, dates
+
+# Example usage
+sample_text = """
+Visit our website at https://www.example.com for more details.
+Key dates to remember: 2024-08-15, 12/09/2024, and 03-03-2024.
+"""
+urls, dates = extract_information(sample_text)
+
+print("Extracted URLs:", urls)
+print("Extracted Dates:", dates)
+```
+
+### Explanation of the Python Code
+- **Import `re`**: The regex library in Python.
+- **Define `extract_information` function**: This function takes a text string as input and uses `re.findall` to extract all matching URLs and dates based on the defined patterns.
+- **Example Usage**: A sample text is provided to demonstrate how the function works, and it prints the extracted URLs and dates.
