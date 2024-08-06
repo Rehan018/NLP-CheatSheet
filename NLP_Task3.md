@@ -72,6 +72,13 @@ predicted_severity = model.predict(test_complaint)
 
 print(f"Predicted severity: {predicted_severity[0]}")
 ```
+**Output:**
+```plaintext
+Predicted severity: High
+```
+
+### Explanation:
+The model has predicted that the severity of the test complaint "Cannot open the project file." is `High`. This prediction is based on the training data provided, where complaints about functional issues (e.g., importing, exporting, crashing) were labeled as `High` severity.
 
 ### Cosine Similarity
 
