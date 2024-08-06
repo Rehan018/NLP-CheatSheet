@@ -48,7 +48,7 @@
 ```python
 import re
 user_input = "I'm having an issue with my order number #123456. Here's my phone number (123)-456-7890 and email john.doe@example.com."
-order_pattern = r'order\s*#?\s*(\d+)'
+order_pattern = r'order\s*(?:number\s*)?#\s*(\d+)'
 phone_pattern = r'\(\d{3}\)-\d{3}-\d{4}'
 email_pattern = r'(\w+@\w+\.\w+)'
 
@@ -64,7 +64,7 @@ print("Extracted Email Address:", email_address)
 
 **Output:**
 ```base
-Extracted Order Number: []
+Extracted Order Number: [123456]
 Extracted Phone Number: ['(123)-456-7890']
 Extracted Email Address: ['doe@example.com']
 ```
