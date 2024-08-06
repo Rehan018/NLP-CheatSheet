@@ -1,4 +1,4 @@
-### NLP Task: Text Classification [Source Video](https://www.youtube.com/watch?v=In7jB8TUGPA&list=PLeo1K3hjS3uuvuAXhYjV2lMEShq2UYSwX&index=5)
+### NLP Task: Text Classification : [Source Video](https://www.youtube.com/watch?v=In7jB8TUGPA&list=PLeo1K3hjS3uuvuAXhYjV2lMEShq2UYSwX&index=5)
 
 **Definition:**
 Text classification is a natural language processing (NLP) task that involves categorizing text into predefined classes or categories based on its content. This process is commonly used for sentiment analysis, spam detection, and topic labeling.
