@@ -43,25 +43,22 @@ TF-IDF is composed of two parts:
 
 ### Term Frequency (TF)
 The Term Frequency (TF) is a measure of how frequently a term (word) appears in a document. It is calculated as:
-```Image
-
-```
+## Diagram Explanation
+![TF-IDF Diagram](1.jpg)
 
 ### Inverse Document Frequency (IDF)
 
 The Inverse Document Frequency (IDF) is a measure of how important a term is. While computing TF, all terms are considered equally important. But certain terms, like "is", "of", and "that", may appear a lot in the documents but have little importance. Thus, we need to weigh down the frequent terms while scaling up the rare ones, by computing the following:
 
 ## Diagram Explanation
-![TF-IDF Diagram](1.jpg)
+![TF-IDF Diagram](2.jpg)
 ### Combining TF and IDF
 
 The TF-IDF score is calculated by multiplying the term frequency and inverse document frequency:
 
-```Image
-```
-### Diagram Explanation
+## Diagram Explanation
+![TF-IDF Diagram](3.jpg)
 
-![TF-IDF Diagram](path/to/your/image.jpg)
 
 1. **Documents**:
    - The diagram shows three documents, each represented by an icon with lines of text.
