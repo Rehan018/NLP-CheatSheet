@@ -1,4 +1,4 @@
-# Comparing spaCy and NLTK for NLP Applications
+# Comparing spaCy and NLTK for NLP Applications : [Source Vide0](https://www.youtube.com/watch?v=h2kBNEShsiE&list=PLeo1K3hjS3uuvuAXhYjV2lMEShq2UYSwX&index=8)
 
 When building NLP applications, you might encounter multiple libraries such as spaCy and NLTK. Both libraries are popular for natural language processing tasks, but they have different approaches and functionalities. This note covers the key differences and provides examples for better understanding.
 
