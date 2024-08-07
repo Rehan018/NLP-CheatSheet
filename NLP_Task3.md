@@ -44,6 +44,7 @@ TF-IDF is composed of two parts:
 ### Term Frequency (TF)
 The Term Frequency (TF) is a measure of how frequently a term (word) appears in a document. It is calculated as:
 ```Image
+![Image](1.jpg)
 ```
 
 ### Inverse Document Frequency (IDF)
