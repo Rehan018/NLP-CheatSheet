@@ -30,7 +30,62 @@ Imagine a scenario where users report bugs or issues with the Camtasia Studio so
      - **Inverse Document Frequency (IDF):** Measures how important a term is in the entire corpus of documents. It’s calculated as the logarithm of the total number of documents divided by the number of documents that contain the term.
      
      The TF-IDF score helps to identify the importance of a word in a document relative to a collection of documents.
+     
+## TF-IDF (Term Frequency-Inverse Document Frequency)
 
+TF-IDF is a statistical measure used to evaluate the importance of a word in a document relative to a collection of documents (corpus). It is widely used in information retrieval and text mining to highlight the most significant words in a text.
+
+### Overview
+
+TF-IDF is composed of two parts:
+1. **Term Frequency (TF)**
+2. **Inverse Document Frequency (IDF)**
+
+### Term Frequency (TF)
+The Term Frequency (TF) is a measure of how frequently a term (word) appears in a document. It is calculated as:
+```Image
+```
+
+### Inverse Document Frequency (IDF)
+
+The Inverse Document Frequency (IDF) is a measure of how important a term is. While computing TF, all terms are considered equally important. But certain terms, like "is", "of", and "that", may appear a lot in the documents but have little importance. Thus, we need to weigh down the frequent terms while scaling up the rare ones, by computing the following:
+
+```Image
+```
+### Combining TF and IDF
+
+The TF-IDF score is calculated by multiplying the term frequency and inverse document frequency:
+
+```Image
+```
+### Diagram Explanation
+
+![TF-IDF Diagram](path/to/your/image.jpg)
+
+1. **Documents**:
+   - The diagram shows three documents, each represented by an icon with lines of text.
+   
+2. **TF Calculation**:
+   - The term frequency for a specific term in each document is calculated based on how often the term appears in that document compared to the total number of terms in the document.
+   
+3. **IDF Calculation**:
+   - The inverse document frequency is calculated to determine the importance of the term across the entire corpus of documents.
+   
+4. **TF-IDF Representation**:
+   - The TF-IDF values are stored in a matrix form where each row represents a document and each column represents a term. The values in the matrix are the TF-IDF scores, reflecting the importance of terms in the respective documents.
+
+5. **Visualization**:
+   - The robot with a lightbulb and a book symbolizes the intelligence applied in analyzing and understanding the text using TF-IDF. The lightbulb represents the idea or understanding gained from this analysis.
+
+### Application
+
+TF-IDF is widely used in information retrieval and text mining. Here are some applications:
+- **Search Engines**: To rank documents by relevance to a search query.
+- **Text Classification**: To categorize documents based on their content.
+- **Keyword Extraction**: To identify important words in a document.
+- **Document Similarity**: To find similar documents based on content.
+
+By assigning higher scores to terms that are frequent in a document but rare in the entire corpus, TF-IDF helps highlight the most significant words in a text, aiding in various natural language processing tasks.
 2. **Vector Representation:**
    Once you compute the TF-IDF scores, you can represent each complaint as a vector of numbers. 
 
