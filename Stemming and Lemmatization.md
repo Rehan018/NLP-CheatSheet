@@ -1,4 +1,4 @@
-### Stemming and Lemmatization in NLP
+### Stemming and Lemmatization in NLP [Source](https://youtu.be/HHAilAC3cXw?si=U136zq7a1qzmr_AB)
 
 #### Introduction
 Stemming and lemmatization are crucial pre-processing steps in building NLP applications. These processes help in reducing words to their base or root forms, aiding in better text classification, search results, and overall language understanding. Let's explore both concepts in detail with code examples.
