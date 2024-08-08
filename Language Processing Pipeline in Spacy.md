@@ -1,4 +1,4 @@
-### **Understanding Language Processing Pipelines in spaCy**
+### **Understanding Language Processing Pipelines in spaCy** [Source Video](https://youtu.be/hKK59rfpXL0?si=VB1EYLOVfjXhYpLS)
 
 In Natural Language Processing (NLP), a pipeline is a sequence of steps where each step performs a specific task on the input text. In spaCy, an NLP pipeline typically involves tokenization followed by other components like tagging, parsing, and named entity recognition (NER). These components help in transforming raw text into a structured format that can be analyzed and used for various applications.
 
