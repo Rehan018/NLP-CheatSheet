@@ -91,9 +91,6 @@ To implement POS tagging, we can use the spaCy library, which provides a pre-tra
 ##### 6. **Using POS Tags in NLP Applications:**
    POS tagging is essential for many NLP tasks such as parsing, named entity recognition, and sentiment analysis. By understanding the role of each word in a sentence, you can better analyze text and make informed decisions in your NLP applications.
 
-##### 7. **Firstlanguage.in Platform:**
-   Firstlanguage.in simplifies the process of building NLP applications by allowing you to perform various tasks via an HTTP call. Unlike local setups where you may need higher compute resources, this platform provides cloud-based solutions, making it easier to implement and scale NLP models.
-
 
 #### Additional Part of Speech (POS) Concepts
 
