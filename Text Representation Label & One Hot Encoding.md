@@ -223,8 +223,8 @@ In text representation, converting text data into numerical vectors is crucial f
      print("Vector Representation:\n", X.toarray())
      ```
   -**Expected Output:**
-     ```
-         Vocabulary: ['add' 'auto' 'can' 'hey' 'pranav']
+     ```json
+     Vocabulary: ['add' 'auto' 'can' 'hey' 'pranav']
          Vector Representation:
          [[1 0 1 1 0]
          [1 1 1 0 0]
