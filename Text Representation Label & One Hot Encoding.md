@@ -222,8 +222,8 @@ In text representation, converting text data into numerical vectors is crucial f
      print("Vocabulary:", vectorizer.get_feature_names_out())
      print("Vector Representation:\n", X.toarray())
      ```
-**Expected Output:**
-     ```base
+  -**Expected Output:**
+     ```
          Vocabulary: ['add' 'auto' 'can' 'hey' 'pranav']
          Vector Representation:
          [[1 0 1 1 0]
