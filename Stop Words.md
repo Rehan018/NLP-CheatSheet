@@ -31,7 +31,7 @@
 
 ### **Python Code Example**
 
-Here’s a Python example demonstrating how to remove stop words using the `nltk` library and create a simple Bag of Words model:
+Python example demonstrating how to remove stop words using the `nltk` library and create a simple Bag of Words model:
 
 ```python
 import nltk
@@ -39,26 +39,20 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from collections import Counter
 
-# Ensure you have the necessary resources
 nltk.download('punkt')
 nltk.download('stopwords')
 
-# Example text
 text = """
 Elon Musk announced the new Tesla Model 3 at the Gigafactory. The car is set to revolutionize the electric vehicle market.
 """
 
-# Tokenize the text
 words = word_tokenize(text.lower())
 
-# Remove stop words
 stop_words = set(stopwords.words('english'))
 filtered_words = [word for word in words if word.isalnum() and word not in stop_words]
 
-# Count word frequencies (Bag of Words)
 word_frequencies = Counter(filtered_words)
 
-# Output the Bag of Words model
 print("Bag of Words Model:", word_frequencies)
 ```
 
