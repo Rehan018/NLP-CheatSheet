@@ -83,7 +83,7 @@ Bag of Words Model: Counter({'tesla': 1, 'model': 1, '3': 1, 'elon': 1, 'musk': 
 
 ### **Python Code Example Using SpaCy**
 
-Here’s how you can implement stop word removal, including handling punctuation, using SpaCy:
+how you can implement stop word removal, including handling punctuation, using SpaCy:
 
 ```python
 import spacy
@@ -147,7 +147,7 @@ Processed Text: ['find', 'yoga', 'mat', 'website', 'help']
   
 #### **Loading and Preprocessing Data with Pandas**
 
-Here’s how to load a JSON dataset into a Pandas DataFrame, preprocess the text, and remove stop words using the earlier defined preprocessing function:
+how to load a JSON dataset into a Pandas DataFrame, preprocess the text, and remove stop words using the earlier defined preprocessing function:
 
 ```python
 import pandas as pd
@@ -270,8 +270,8 @@ Filtered DataFrame shape: (4000, 5)  # After filtering rows with empty topics
 Subset DataFrame shape: (100, 5)     # After limiting to the first 100 rows
 
 # Example output of processed content:
-content                                     | content_new
---------------------------------------------|--------------------------------
+content                                        | content_new
+-----------------------------------------------|--------------------------------
 "The Department of Justice today announced..." | "Department Justice today announced"
 "A federal court case was decided in favor..." | "federal court case decided favor"
 ...
