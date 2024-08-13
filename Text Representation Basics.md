@@ -207,3 +207,92 @@ Cosine Similarity between 'Dhoni' and 'Australia': 0.54
 ```
 
 *Note*: The actual similarity values may vary depending on the SpaCy model used and the specific context of the words.
+
+
+
+### **Text Representation and Feature Engineering in NLP**
+
+#### **Vector Representation and Cosine Similarity**
+- **Vector Representation of Words**:
+  - Words are converted into vectors (sets of numbers) instead of a single number.
+  - **Benefit**: Vectors enable mathematical operations like cosine similarity, which helps in comparing the similarity between words.
+  
+- **Cosine Similarity**:
+  - Measures the similarity between two vectors.
+  - Example:
+    - **"Dhoni"** and **"comments"** might have a higher cosine similarity because they are contextually related (e.g., in cricket).
+    - **"Dhoni"** and **"Australia"** might have a lower similarity because they belong to different categories (person vs. location).
+
+#### **Importance of Similarity in NLP**
+- **Practical Use Case**:
+  - Consider a sentiment analysis model trained on reviews where "worse" is labeled negatively.
+  - When the model encounters "bad," a word with similar meaning to "worse," the vector representation helps the model recognize the similarity, leading to a correct sentiment prediction.
+
+- **Text to Numbers Conversion**:
+  - **Why Convert Text to Numbers?**
+    - Machine learning models cannot process text directly; they require numerical input.
+    - **Vector Representation**: A method to convert text into numbers (vectors), enabling machine learning models to work with textual data.
+  
+#### **Text Representation Techniques**
+- **Vector Space Model**:
+  - This model represents text (words, phrases, sentences, or paragraphs) as vectors of numbers.
+  - **Feature Engineering**: The process of extracting features (e.g., person, location) from raw text and constructing these vectors is called feature engineering.
+
+- **Different Text Representation Approaches**:
+  - **One-Hot Encoding**: A basic method, less popular in modern NLP.
+  - **Bag of Words**: Another common method, which will be explored in the next tutorial for an email spam detection problem.
+
+#### **Key Insight on Text Representation**
+- **Importance of Good Representation**:
+  - A quote from the book *Practical NLP* emphasizes that **feeding a good representation to an ordinary algorithm** often yields better results than using a top-notch algorithm on a poor text representation.
+  - **Focus on Feature Engineering**: As an NLP engineer, focus more on extracting meaningful features and representing text well using models like the Vector Space Model.
+
+---
+
+### **Python Code: Vector Representation and Cosine Similarity in NLP**
+
+To put these concepts into practice, let's create a Python code that converts text into vectors and calculates cosine similarity.
+
+#### **Code Example: Text Representation and Cosine Similarity**
+
+```python
+import spacy
+from sklearn.metrics.pairwise import cosine_similarity
+
+# Load SpaCy's pre-trained model
+nlp = spacy.load("en_core_web_sm")
+
+# Example words
+word1 = nlp("Dhoni")
+word2 = nlp("comments")
+word3 = nlp("Australia")
+
+# Extract the vector representations
+vector1 = word1.vector.reshape(1, -1)
+vector2 = word2.vector.reshape(1, -1)
+vector3 = word3.vector.reshape(1, -1)
+
+# Calculate cosine similarities
+similarity1 = cosine_similarity(vector1, vector2)[0][0]
+similarity2 = cosine_similarity(vector1, vector3)[0][0]
+
+# Display the results
+print(f"Cosine Similarity between 'Dhoni' and 'comments': {similarity1:.2f}")
+print(f"Cosine Similarity between 'Dhoni' and 'Australia': {similarity2:.2f}")
+```
+
+#### **Expected Output**
+The output will show the cosine similarity between the word pairs:
+
+```plaintext
+Cosine Similarity between 'Dhoni' and 'comments': 0.67
+Cosine Similarity between 'Dhoni' and 'Australia': 0.54
+```
+
+*Note*: Similarity values may vary depending on the context and the model used.
+
+---
+
+### **Conclusion**
+- **Focus on Text Representation**: The key takeaway is that in NLP, the quality of text representation (how well you can represent words as vectors) often matters more than the complexity of the machine learning algorithm.
+- **Next Steps**: The next tutorial will delve into **Bag of Words** and apply it to an **email spam detection** problem with coding examples.
