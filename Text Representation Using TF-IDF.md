@@ -328,3 +328,729 @@ print(tfidf_vectorizer.get_feature_names_out())
 - We’ll use TF-IDF in our coding exercises to enhance text classification for various NLP tasks, including e-commerce product categorization.
 
 This overview and code implementation should help you understand and apply TF-IDF effectively in your NLP projects.
+
+### **Practical Implementation of TF-IDF in Jupyter Notebook**
+
+Here’s a step-by-step guide on using TF-IDF Vectorizer with some sample dummy sentences in a Jupyter Notebook:
+
+**1. Import Libraries and Initialize Vectorizer:**
+
+First, you'll import the necessary library and create an instance of the `TfidfVectorizer`:
+
+```python
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+# Sample corpus of dummy sentences
+corpus = [
+    "Apple releases new iPhone and iTunes update.",
+    "Tesla CEO Elon Musk announces new Gigafactory.",
+    "Stock market sees a rise in tech companies.",
+    "Investors show interest in Tesla's new developments."
+]
+
+# Initialize the TF-IDF Vectorizer
+tfidf_vectorizer = TfidfVectorizer(smooth_idf=True, use_idf=True)
+```
+
+**2. Fit and Transform the Corpus:**
+
+Use `fit_transform` to compute the TF-IDF scores and transform the text data into TF-IDF vectors:
+
+```python
+# Fit and transform the corpus
+tfidf_matrix = tfidf_vectorizer.fit_transform(corpus)
+
+# Output the transformed TF-IDF matrix
+print("TF-IDF Matrix:")
+print(tfidf_matrix.toarray())
+```
+
+**3. Print the Vocabulary and Feature Names:**
+
+The vocabulary of the TF-IDF vectorizer is a dictionary mapping terms to indices. You can print it along with the feature names:
+
+```python
+# Print the vocabulary (terms to indices mapping)
+print("Vocabulary:")
+print(tfidf_vectorizer.vocabulary_)
+
+# Print feature names in order
+print("Feature Names:")
+print(tfidf_vectorizer.get_feature_names_out())
+```
+
+**4. Access and Print IDF Scores:**
+
+You can access the IDF scores directly from the vectorizer object. Here’s how to print them:
+
+```python
+# Get IDF scores
+idf_scores = tfidf_vectorizer.idf_
+
+# Print IDF scores
+print("IDF Scores:")
+for term, index in tfidf_vectorizer.vocabulary_.items():
+    print(f"Term: {term}, IDF: {idf_scores[index]}")
+```
+
+**Explanation:**
+
+- **Vocabulary and Feature Names:** The vocabulary is a dictionary where keys are terms and values are their indices in the TF-IDF matrix. The feature names give the list of terms in the order corresponding to these indices.
+
+- **IDF Scores:** The IDF scores indicate the importance of each term. Higher scores mean the term is rarer across the documents.
+
+**Complete Example Code:**
+
+Here’s the complete code for executing these steps:
+
+```python
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+# Sample corpus of dummy sentences
+corpus = [
+    "Apple releases new iPhone and iTunes update.",
+    "Tesla CEO Elon Musk announces new Gigafactory.",
+    "Stock market sees a rise in tech companies.",
+    "Investors show interest in Tesla's new developments."
+]
+
+# Initialize the TF-IDF Vectorizer
+tfidf_vectorizer = TfidfVectorizer(smooth_idf=True, use_idf=True)
+
+# Fit and transform the corpus
+tfidf_matrix = tfidf_vectorizer.fit_transform(corpus)
+
+# Output the transformed TF-IDF matrix
+print("TF-IDF Matrix:")
+print(tfidf_matrix.toarray())
+
+# Print the vocabulary (terms to indices mapping)
+print("Vocabulary:")
+print(tfidf_vectorizer.vocabulary_)
+
+# Print feature names in order
+print("Feature Names:")
+print(tfidf_vectorizer.get_feature_names_out())
+
+# Get IDF scores
+idf_scores = tfidf_vectorizer.idf_
+
+# Print IDF scores
+print("IDF Scores:")
+for term, index in tfidf_vectorizer.vocabulary_.items():
+    print(f"Term: {term}, IDF: {idf_scores[index]}")
+```
+### **Accessing and Interpreting TF-IDF Scores**
+
+**Printing TF-IDF Scores:**
+
+To get and print TF-IDF scores for specific terms and documents, follow these steps:
+
+**1. Retrieve IDF Scores:**
+You can retrieve the IDF scores for each term using the `idf_` attribute of the `TfidfVectorizer`. Here’s how you can print the IDF score for each term:
+
+```python
+# Print IDF scores for each term
+print("IDF Scores:")
+for term, index in tfidf_vectorizer.vocabulary_.items():
+    print(f"Term: {term}, IDF: {idf_scores[index]}")
+```
+
+**2. Check TF-IDF Scores for Specific Terms:**
+To check and verify the TF-IDF scores for specific terms, you can use the term’s index in the transformed output matrix:
+
+```python
+# Print TF-IDF vectors for the first two sentences
+print("TF-IDF Vectors for First Two Sentences:")
+print(tfidf_matrix.toarray()[:2])  # Prints TF-IDF vectors for the first two sentences
+
+# Check the position of specific terms, e.g., 'is'
+term_index = tfidf_vectorizer.vocabulary_.get('is')
+print(f"Index of 'is': {term_index}")
+
+# Print TF-IDF scores for term 'is' in each document
+print("TF-IDF Scores for 'is':")
+print(tfidf_matrix[:, term_index].toarray())
+```
+
+**Explanation:**
+
+1. **IDF Scores:**
+   - Terms that appear in many documents have lower IDF scores because they are less informative.
+   - Terms that appear in few documents have higher IDF scores, indicating higher importance.
+
+2. **TF-IDF Vectors:**
+   - The TF-IDF matrix is sparse, so converting it to an array helps in easy visualization and interpretation.
+   - Each row in the matrix represents a document, and each column represents a term’s TF-IDF score.
+
+**Example Output:**
+
+Given a sample corpus, the output might look like this:
+
+```plaintext
+TF-IDF Matrix:
+[[0.0 0.0 0.0 0.1 0.0 0.1 0.2 0.0 0.0 0.0]
+ [0.0 0.0 0.0 0.1 0.0 0.1 0.0 0.2 0.0 0.0]]
+ 
+Feature Names:
+['apple', 'development', 'elon', 'factory', 'i', 'iphone', 'market', 'new', 'stock', 'tesla']
+
+IDF Scores:
+Term: apple, IDF: 1.5
+Term: development, IDF: 1.8
+Term: elon, IDF: 2.0
+...
+```
+
+**3. Inspecting TF-IDF Values for Terms:**
+   - To verify a specific term’s TF-IDF values across documents, locate its column in the matrix and print the values for that term.
+
+**4. Additional Insights:**
+   - The TF-IDF scores should reflect that common terms (like "is") have lower scores, while more specific terms (like "apple" or "tesla") have higher scores.
+
+**Complete Code:**
+
+Here's the complete code snippet to demonstrate these steps:
+
+```python
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+# Sample corpus
+corpus = [
+    "Apple releases new iPhone and iTunes update.",
+    "Tesla CEO Elon Musk announces new Gigafactory.",
+    "Stock market sees a rise in tech companies.",
+    "Investors show interest in Tesla's new developments."
+]
+
+# Initialize TF-IDF Vectorizer
+tfidf_vectorizer = TfidfVectorizer(smooth_idf=True, use_idf=True)
+
+# Fit and transform the corpus
+tfidf_matrix = tfidf_vectorizer.fit_transform(corpus)
+
+# Get IDF scores
+idf_scores = tfidf_vectorizer.idf_
+
+# Print IDF scores for each term
+print("IDF Scores:")
+for term, index in tfidf_vectorizer.vocabulary_.items():
+    print(f"Term: {term}, IDF: {idf_scores[index]}")
+
+# Print TF-IDF vectors for the first two sentences
+print("TF-IDF Vectors for First Two Sentences:")
+print(tfidf_matrix.toarray()[:2])  # First two rows of the matrix
+
+# Check the position of specific term
+term_index = tfidf_vectorizer.vocabulary_.get('is')
+print(f"Index of 'is': {term_index}")
+
+# Print TF-IDF scores for term 'is' in each document
+print("TF-IDF Scores for 'is':")
+print(tfidf_matrix[:, term_index].toarray())
+```
+### **E-Commerce Text Classification Using TF-IDF**
+
+In this section, we will explore how to use TF-IDF for text classification with an e-commerce dataset. This will involve reading the dataset, preprocessing the text, and using TF-IDF features for classification. Here’s how you can do it step-by-step:
+
+**1. **Load the Dataset:**
+   - First, import the necessary libraries and load your CSV file containing the e-commerce item descriptions and their categories.
+
+```python
+import pandas as pd
+
+# Load the dataset
+df = pd.read_csv('ecommerce_data.csv')
+
+# Print the shape and first few rows of the dataset
+print("Dataset Shape:", df.shape)
+print("First Few Rows:")
+print(df.head())
+```
+
+**2. **Preprocess the Data:**
+   - Check for class imbalance and other potential issues in the dataset.
+
+```python
+# Check for class imbalance
+print("Class Distribution:")
+print(df['category'].value_counts())
+```
+
+**3. **Prepare Data for TF-IDF Vectorization:**
+   - Extract text descriptions and their corresponding labels. Convert the text descriptions to TF-IDF vectors.
+
+```python
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report
+
+# Extract text and labels
+X = df['description']
+y = df['category']
+
+# Encode the labels
+label_encoder = LabelEncoder()
+y_encoded = label_encoder.fit_transform(y)
+
+# Split the data into training and test sets
+X_train, X_test, y_train, y_test = train_test_split(X, y_encoded, test_size=0.3, random_state=42)
+
+# Initialize TF-IDF Vectorizer
+tfidf_vectorizer = TfidfVectorizer(smooth_idf=True, use_idf=True)
+
+# Fit and transform the training data
+X_train_tfidf = tfidf_vectorizer.fit_transform(X_train)
+
+# Transform the test data
+X_test_tfidf = tfidf_vectorizer.transform(X_test)
+```
+
+**4. **Train a Classifier:**
+   - Train a machine learning model using the TF-IDF features.
+
+```python
+# Initialize and train a Logistic Regression model
+model = LogisticRegression(max_iter=1000)
+model.fit(X_train_tfidf, y_train)
+
+# Predict on the test set
+y_pred = model.predict(X_test_tfidf)
+
+# Evaluate the model
+print("Classification Report:")
+print(classification_report(y_test, y_pred, target_names=label_encoder.classes_))
+```
+
+**Explanation:**
+
+- **Loading the Dataset:** Import the dataset and inspect its structure. Use `df.shape` to check the dimensions and `df.head()` to view the first few rows.
+
+- **Preprocessing:** Check the distribution of categories to understand any class imbalance which might affect the model’s performance.
+
+- **TF-IDF Vectorization:** Convert text descriptions into TF-IDF features which will be used for classification.
+
+- **Model Training:** Train a classifier (e.g., Logistic Regression) on the TF-IDF features and evaluate its performance.
+
+**Example Output:**
+
+```plaintext
+Dataset Shape: (1000, 2)
+First Few Rows:
+                                           description category
+0  High-quality USB charging cable for mobile de...   electronics
+1  The Great Gatsby by F. Scott Fitzgerald - clas...        books
+2  Modern ergonomic office chair with lumbar suppo...    furniture
+...
+Class Distribution:
+electronics    400
+books           300
+furniture       200
+clothing        100
+Name: category, dtype: int64
+
+Classification Report:
+               precision    recall  f1-score   support
+
+   electronics       0.84      0.85      0.84       120
+         books       0.78      0.80      0.79       130
+     furniture       0.85      0.83      0.84       120
+      clothing       0.77      0.78      0.77       130
+
+    accuracy                           0.80       500
+   macro avg       0.81      0.81      0.81       500
+weighted avg       0.80      0.80      0.80       500
+```
+
+**Notes:**
+- **TF-IDF Matrix:** The transformed matrix shows how important each term is in the context of the entire dataset.
+- **Model Evaluation:** The classification report gives precision, recall, and F1-score for each category, providing insights into the model’s performance.
+
+### **Text Classification with Various Classifiers Using TF-IDF**
+
+In this part, we’ll enhance the text classification project by encoding labels, splitting the dataset, and experimenting with different classifiers. Here’s how you can proceed:
+
+**1. **Encode Labels:**
+   - Convert text labels into numerical values that machine learning models can understand.
+
+```python
+# Create a mapping for category labels
+category_mapping = {
+    'electronics': 0,
+    'books': 1,
+    'furniture': 2,
+    'clothing': 3
+}
+
+# Map categories to numbers
+df['label_number'] = df['category'].map(category_mapping)
+
+# Check the dataframe
+print(df.head())
+```
+
+**2. **Split the Data:**
+   - Use `train_test_split` to divide the dataset into training and test sets. Ensure to maintain class balance in both sets using stratified splitting.
+
+```python
+from sklearn.model_selection import train_test_split
+
+# Define features and target variable
+X = df['description']
+y = df['label_number']
+
+# Split the dataset
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
+
+# Check the shapes of the splits
+print("Training data shape:", X_train.shape)
+print("Test data shape:", X_test.shape)
+print("Training labels distribution:")
+print(y_train.value_counts())
+print("Test labels distribution:")
+print(y_test.value_counts())
+```
+
+**3. **Vectorize Text Data:**
+   - Apply TF-IDF vectorization to the training and test datasets.
+
+```python
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+# Initialize TF-IDF Vectorizer
+tfidf_vectorizer = TfidfVectorizer()
+
+# Fit and transform training data
+X_train_tfidf = tfidf_vectorizer.fit_transform(X_train)
+
+# Transform test data
+X_test_tfidf = tfidf_vectorizer.transform(X_test)
+```
+
+**4. **Train and Evaluate Different Classifiers:**
+   - Experiment with different classifiers to see how they perform with the TF-IDF features.
+
+```python
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import classification_report
+
+# Initialize classifiers
+knn = KNeighborsClassifier(n_neighbors=5)
+rf = RandomForestClassifier(n_estimators=100, random_state=42)
+nb = MultinomialNB()
+
+# Train and evaluate K-Nearest Neighbors (KNN)
+knn.fit(X_train_tfidf, y_train)
+y_pred_knn = knn.predict(X_test_tfidf)
+print("K-Nearest Neighbors Classification Report:")
+print(classification_report(y_test, y_pred_knn))
+
+# Train and evaluate Random Forest
+rf.fit(X_train_tfidf, y_train)
+y_pred_rf = rf.predict(X_test_tfidf)
+print("Random Forest Classification Report:")
+print(classification_report(y_test, y_pred_rf))
+
+# Train and evaluate Naive Bayes
+nb.fit(X_train_tfidf, y_train)
+y_pred_nb = nb.predict(X_test_tfidf)
+print("Naive Bayes Classification Report:")
+print(classification_report(y_test, y_pred_nb))
+```
+
+**Explanation:**
+
+- **Label Encoding:** Convert text categories into numerical labels to prepare them for classification.
+- **Data Splitting:** Use `train_test_split` with stratification to ensure balanced classes in both training and test datasets.
+- **TF-IDF Vectorization:** Transform text data into numerical features that represent the importance of each term.
+- **Classifier Training:** Train and evaluate different classifiers (KNN, Random Forest, Naive Bayes) to compare their performance on the text classification task.
+
+**Example Output:**
+
+```plaintext
+Training data shape: (4800,)
+Test data shape: (1200,)
+Training labels distribution:
+0    1200
+1    1200
+2    1200
+3    1200
+Name: label_number, dtype: int64
+Test labels distribution:
+0    300
+1    300
+2    300
+3    300
+Name: label_number, dtype: int64
+
+K-Nearest Neighbors Classification Report:
+               precision    recall  f1-score   support
+
+   electronics       0.80      0.79      0.79       300
+         books       0.76      0.80      0.78       300
+     furniture       0.82      0.78      0.80       300
+      clothing       0.78      0.82      0.80       300
+
+    accuracy                           0.79      1200
+   macro avg       0.79      0.79      0.79      1200
+weighted avg       0.79      0.79      0.79      1200
+
+Random Forest Classification Report:
+               precision    recall  f1-score   support
+
+   electronics       0.85      0.84      0.84       300
+         books       0.80      0.84      0.82       300
+     furniture       0.85      0.84      0.84       300
+      clothing       0.83      0.83      0.83       300
+
+    accuracy                           0.84      1200
+   macro avg       0.83      0.84      0.83      1200
+weighted avg       0.84      0.84      0.84      1200
+
+Naive Bayes Classification Report:
+               precision    recall  f1-score   support
+
+   electronics       0.77      0.79      0.78       300
+         books       0.72      0.74      0.73       300
+     furniture       0.76      0.74      0.75       300
+      clothing       0.70      0.70      0.70       300
+
+    accuracy                           0.74      1200
+   macro avg       0.74      0.74      0.74      1200
+weighted avg       0.74      0.74      0.74      1200
+```
+
+**Notes:**
+- **Balanced Dataset:** Ensure that each class is represented equally in both training and test datasets.
+- **Classifier Performance:** Different classifiers might perform differently based on the dataset and the nature of the text data. Use the classification report to understand precision, recall, and F1-score for each class.
+
+
+### **Using Pipelines for Text Classification**
+
+In this section, you’re leveraging scikit-learn’s `Pipeline` to streamline the text classification process by combining TF-IDF vectorization with classification. Here’s a concise guide on how to implement it:
+
+**1. **Setup Your Environment:**
+   - Import necessary libraries and modules.
+
+```python
+from sklearn.pipeline import Pipeline
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import classification_report
+```
+
+**2. **Create a Pipeline:**
+   - Combine TF-IDF vectorization and K-Nearest Neighbors (KNN) classifier into a single pipeline.
+
+```python
+# Define the pipeline
+pipeline = Pipeline([
+    ('tfidf', TfidfVectorizer()),  # First stage: TF-IDF vectorization
+    ('clf', KNeighborsClassifier())  # Second stage: KNN classifier
+])
+```
+
+**3. **Train the Model:**
+   - Fit the pipeline with the training data.
+
+```python
+pipeline.fit(X_train, y_train)
+```
+
+**4. **Make Predictions:**
+   - Predict on the test dataset and evaluate the results.
+
+```python
+y_pred = pipeline.predict(X_test)
+
+# Print classification report
+print(classification_report(y_test, y_pred))
+```
+
+**5. **Understanding the Classification Report:**
+   - The classification report includes:
+     - **Precision:** The ratio of correctly predicted positive observations to the total predicted positives.
+     - **Recall:** The ratio of correctly predicted positive observations to all observations in the actual class.
+     - **F1 Score:** The weighted average of Precision and Recall. 
+
+**Example Code:**
+
+```python
+from sklearn.pipeline import Pipeline
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import classification_report
+from sklearn.model_selection import train_test_split
+import pandas as pd
+
+# Load the dataset
+df = pd.read_csv('ecommerce_data.csv')
+
+# Map category labels to numbers
+category_mapping = {
+    'electronics': 0,
+    'books': 1,
+    'furniture': 2,
+    'clothing': 3
+}
+df['label_number'] = df['category'].map(category_mapping)
+
+# Define features and target variable
+X = df['description']
+y = df['label_number']
+
+# Split the dataset
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
+
+# Define the pipeline
+pipeline = Pipeline([
+    ('tfidf', TfidfVectorizer()),  # First stage: TF-IDF vectorization
+    ('clf', KNeighborsClassifier())  # Second stage: KNN classifier
+])
+
+# Train the model
+pipeline.fit(X_train, y_train)
+
+# Predict on test data
+y_pred = pipeline.predict(X_test)
+
+# Print classification report
+print(classification_report(y_test, y_pred))
+```
+
+**Notes:**
+- **Pipeline Efficiency:** Using a pipeline makes the process cleaner and less error-prone by encapsulating the preprocessing and classification steps.
+- **Evaluation Metrics:** Check the precision, recall, and F1 scores to understand how well your model performs across different categories.
+
+
+### **Text Classification with Different Classifiers**
+
+Here’s a summary of the process you’ve outlined for evaluating different classifiers on a text classification task:
+
+1. **Evaluate Predictions:**
+   - After training your model, you compare the true labels (`y_test`) with predicted labels (`y_pred`) for the first few samples to see if the model is predicting correctly.
+
+2. **Comparing Classifiers:**
+   - **K-Nearest Neighbors (KNN):**
+     - Good for quick results but may not always be the best for text data.
+   - **Naive Bayes (Multinomial):**
+     - Often effective for text classification tasks due to its simplicity and effectiveness with word frequencies.
+   - **Random Forest:**
+     - Usually a strong performer for various tasks and can handle more complex relationships in the data.
+
+3. **Implementing Multinomial Naive Bayes:**
+   - Import `MultinomialNB` and replace `KNeighborsClassifier` in the pipeline with it.
+   - Compare the performance metrics such as precision, recall, and F1 score to evaluate how well this classifier performs.
+
+4. **Example Code for Multinomial Naive Bayes:**
+
+```python
+from sklearn.naive_bayes import MultinomialNB
+
+# Define the pipeline with Multinomial Naive Bayes
+pipeline_nb = Pipeline([
+    ('tfidf', TfidfVectorizer()),  # TF-IDF vectorization
+    ('clf', MultinomialNB())       # Multinomial Naive Bayes classifier
+])
+
+# Train the model
+pipeline_nb.fit(X_train, y_train)
+
+# Predict on test data
+y_pred_nb = pipeline_nb.predict(X_test)
+
+# Print classification report
+print("Multinomial Naive Bayes Classification Report:")
+print(classification_report(y_test, y_pred_nb))
+```
+
+5. **Switching to Random Forest Classifier:**
+   - Similar to the other classifiers, create a pipeline with `RandomForestClassifier` and evaluate its performance.
+
+6. **Example Code for Random Forest:**
+
+```python
+from sklearn.ensemble import RandomForestClassifier
+
+# Define the pipeline with Random Forest
+pipeline_rf = Pipeline([
+    ('tfidf', TfidfVectorizer()),  # TF-IDF vectorization
+    ('clf', RandomForestClassifier())  # Random Forest classifier
+])
+
+# Train the model
+pipeline_rf.fit(X_train, y_train)
+
+# Predict on test data
+y_pred_rf = pipeline_rf.predict(X_test)
+
+# Print classification report
+print("Random Forest Classification Report:")
+print(classification_report(y_test, y_pred_rf))
+```
+
+7. **Preprocessing Text Data:**
+   - To enhance the model performance, preprocessing text data (like removing stop words, lemmatization) can be crucial.
+   - Define a preprocessing function and apply it before fitting the model.
+
+**Example Preprocessing Function:**
+
+```python
+import spacy
+
+# Load spaCy's English tokenizer
+nlp = spacy.load('en_core_web_sm')
+
+def preprocess(text):
+    doc = nlp(text)
+    # Lemmatize and remove stop words
+    return ' '.join([token.lemma_ for token in doc if not token.is_stop])
+
+# Apply preprocessing
+df['preprocessed_text'] = df['description'].apply(preprocess)
+```
+
+**Training with Preprocessed Text:**
+
+```python
+# Use preprocessed text
+X = df['preprocessed_text']
+
+# Split, train, and evaluate models as before
+```
+
+It sounds like you’ve wrapped up the tutorial with some key takeaways on text classification, model evaluation, and the importance of preprocessing. Here’s a brief summary of the main points:
+
+### **Summary:**
+
+1. **Preprocessing:**
+   - **Purpose:** To clean and normalize text data, which can improve model performance.
+   - **Steps:**
+     - Remove stop words and punctuation.
+     - Perform lemmatization to reduce words to their base forms.
+   - **Implementation:** Applied the preprocessing function to create a new column in the dataset.
+
+2. **Model Training and Evaluation:**
+   - **Raw Text vs. Preprocessed Text:**
+     - Training with raw text and preprocessed text showed that preprocessing improved the performance of the models.
+   - **Classifiers Used:**
+     - **K-Nearest Neighbors (KNN)**
+     - **Multinomial Naive Bayes**
+     - **Random Forest Classifier**
+   - **Performance Metrics:** Compared precision, recall, and F1 scores to determine the best performing model.
+
+3. **Next Steps:**
+   - **Exercise:** An exercise will be added to the video description for further practice.
+   - **Practice:** Emphasized the importance of hands-on practice to master machine learning and NLP concepts.
+
+### **Key Takeaways:**
+
+- **Preprocessing:** Helps in enhancing model performance by providing cleaner and more relevant features.
+- **Model Selection:** Different classifiers can be tried, and performance metrics should guide the selection of the best model.
+- **Practice:** Essential for mastering the techniques and concepts discussed.
+
+If you have any questions about this tutorial or need further clarification on any part, feel free to ask!
