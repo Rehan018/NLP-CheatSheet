@@ -255,4 +255,75 @@ print(tfidf_vectorizer.get_feature_names_out())
 - **Learning Variants:**
   - Note that different libraries or applications might use slight variations of the TF-IDF formula. It’s good practice to refer to the specific documentation or implementations you are working with.
 
-By incorporating both TF and IDF, TF-IDF provides a balanced measure of term importance, helping to improve text classification and other NLP tasks.
+### **Additional Details on TF-IDF**
+
+**Handling Zero Division in IDF:**
+- To avoid division by zero in the IDF calculation, a common practice is to add a constant (usually 1) to both the numerator and the denominator of the IDF formula. This adjustment prevents any undefined values and stabilizes the calculation.
+
+  ![Adjusted IDF Formula](12.png)
+
+
+
+  Here, \( N \) is the total number of documents, and \(\text{DF}(t)\) is the number of documents containing the term \( t \).
+
+**Why Use the Logarithm in IDF:**
+- **Purpose of Logarithm:**
+  - The logarithm helps to dampen the impact of very frequent terms. Without the log transformation, highly frequent terms would have disproportionately high weights.
+  - Logarithmic scaling flattens the distribution, making it easier to compare terms with a wide range of frequencies.
+
+  **Example:**
+  - If the term "computer" appears one million times, the log transformation reduces the influence of this term to a more manageable value.
+  ![ Logarithm function properties](13.png)
+
+**Limitations of TF-IDF:**
+1. **Dimensionality and Sparsity:**
+   - As the vocabulary grows, the resulting TF-IDF matrix becomes more sparse. This can lead to challenges in computation and storage.
+
+2. **Discrete Representation:**
+   - TF-IDF does not capture the relationships between words. It represents text as a bag of terms, losing the context and meaning derived from word sequences.
+
+3. **Out of Vocabulary (OOV) Problem:**
+   - TF-IDF relies on a fixed vocabulary. Any word not present in the training corpus will be ignored, leading to potential issues with unseen words during inference.
+
+4. **Alternative Approaches:**
+   - **Word Embeddings:** Capture semantic relationships between words (e.g., Word2Vec, GloVe).
+   - **Sentence Embeddings:** Represent entire sentences or phrases in a dense vector space (e.g., BERT, GPT).
+
+### **Python Code for TF-IDF Implementation**
+
+Here’s a complete example to illustrate TF-IDF calculation using Python:
+
+```python
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+# Sample corpus of news articles
+corpus = [
+    "Apple releases new iPhone and iTunes update.",
+    "Tesla CEO Elon Musk announces new Gigafactory.",
+    "Stock market sees a rise in tech companies.",
+    "Investors show interest in Tesla's new developments."
+]
+
+# Initialize the TF-IDF Vectorizer with parameters to handle zero division
+tfidf_vectorizer = TfidfVectorizer(smooth_idf=True, use_idf=True)
+
+# Fit and transform the corpus
+tfidf_matrix = tfidf_vectorizer.fit_transform(corpus)
+
+# Display the TF-IDF matrix
+print("TF-IDF Matrix:")
+print(tfidf_matrix.toarray())
+
+# Display feature names (words)
+print("Feature Names:")
+print(tfidf_vectorizer.get_feature_names_out())
+```
+
+**Expected Output Discussion:**
+- The TF-IDF matrix will display the importance of each term for each document.
+- Terms with high TF-IDF scores are those that are frequent in specific documents but rare across the entire corpus.
+
+**Next Steps:**
+- We’ll use TF-IDF in our coding exercises to enhance text classification for various NLP tasks, including e-commerce product categorization.
+
+This overview and code implementation should help you understand and apply TF-IDF effectively in your NLP projects.
