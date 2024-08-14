@@ -109,6 +109,8 @@ print(tfidf_vectorizer.get_feature_names_out())
 
 2. **IDF Calculation:**
   ![gigafactory](5.png)
+
+
 **Python Implementation of TF-IDF Calculation:**
 
 Here’s how you can calculate TF-IDF using Python:
