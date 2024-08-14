@@ -98,9 +98,7 @@ print(tfidf_vectorizer.get_feature_names_out())
 **Scoring Mechanism:**
 - **TF-IDF Score:** 
   - The TF-IDF score for a term in a document is calculated as:
-    \[
-    \text{TF-IDF}(t, d) = \text{TF}(t, d) \times \text{IDF}(t)
-    \]
+   ![TF-IDF Score](6.png)
     where \(\text{TF}(t, d)\) is the term frequency in document \( d \).
 
 **Example Calculation:**
@@ -110,15 +108,7 @@ print(tfidf_vectorizer.get_feature_names_out())
    - If the term "iphone" appears in 2 documents out of 4, \(\text{DF}(\text{iphone}) = 2\).
 
 2. **IDF Calculation:**
-   - For "gigafactory":
-     \[
-     \text{IDF}(\text{gigafactory}) = \log \left(\frac{4}{1}\right) = \log(4) \approx 0.60
-     \]
-   - For "iphone":
-     \[
-     \text{IDF}(\text{iphone}) = \log \left(\frac{4}{2}\right) = \log(2) \approx 0.30
-     \]
-
+  ![gigafactory](5.png)
 **Python Implementation of TF-IDF Calculation:**
 
 Here’s how you can calculate TF-IDF using Python:
