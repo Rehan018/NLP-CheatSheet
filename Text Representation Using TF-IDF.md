@@ -152,3 +152,95 @@ print(tfidf_vectorizer.get_feature_names_out())
   
 - **Scoring Mechanism:**
   - The use of IDF ensures that terms appearing in many documents are less influential, thus improving the model’s ability to classify documents based on distinctive terms.
+
+### **Understanding Term Frequency and Inverse Document Frequency (TF-IDF)**
+
+**Inverse Document Frequency (IDF) Recap:**
+- **IDF Formula:**
+  \[
+  \text{IDF}(t) = \log \left(\frac{N}{\text{DF}(t)}\right)
+  \]
+  where \( N \) is the total number of documents and \(\text{DF}(t)\) is the number of documents containing the term \( t \).
+
+- **Purpose of Logarithm:**
+  - The logarithm is used to dampen the effect of the frequency count, preventing the IDF value from being disproportionately large. It makes the scoring less sensitive to terms that appear in many documents.
+
+**Term Frequency (TF):**
+- **Term Frequency Formula:**
+  \[
+  \text{TF}(t, d) = \frac{\text{Number of times term } t \text{ appears in document } d}{\text{Total number of terms in document } d}
+  \]
+  - This normalizes the term frequency by considering the length of the document.
+
+**Combining TF and IDF:**
+- **TF-IDF Formula:**
+  \[
+  \text{TF-IDF}(t, d) = \text{TF}(t, d) \times \text{IDF}(t)
+  \]
+  - TF-IDF combines term frequency and inverse document frequency to score the importance of a term in a document relative to a corpus.
+
+**Example Calculation:**
+1. **TF Calculation:**
+   - If the term "market" appears 48 times in a 1000-word article:
+     \[
+     \text{TF}(\text{market}, \text{article}) = \frac{48}{1000} = 0.048
+     \]
+
+2. **IDF Calculation:**
+   - If "market" appears in 3 out of 4 documents:
+     \[
+     \text{IDF}(\text{market}) = \log \left(\frac{4}{3}\right) \approx 0.12
+     \]
+
+3. **TF-IDF Calculation:**
+   - Combining the above TF and IDF values:
+     \[
+     \text{TF-IDF}(\text{market}, \text{article}) = 0.048 \times 0.12 = 0.00576
+     \]
+
+**Python Implementation of TF-IDF:**
+
+Here’s how you can compute TF-IDF using Python:
+
+```python
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+# Sample corpus of news articles
+corpus = [
+    "Apple releases new iPhone and iTunes update.",
+    "Tesla CEO Elon Musk announces new Gigafactory.",
+    "Stock market sees a rise in tech companies.",
+    "Investors show interest in Tesla's new developments."
+]
+
+# Initialize the TF-IDF Vectorizer
+tfidf_vectorizer = TfidfVectorizer()
+
+# Fit and transform the corpus
+tfidf_matrix = tfidf_vectorizer.fit_transform(corpus)
+
+# Display the TF-IDF matrix
+print("TF-IDF Matrix:")
+print(tfidf_matrix.toarray())
+
+# Display feature names (words)
+print("Feature Names:")
+print(tfidf_vectorizer.get_feature_names_out())
+```
+
+**Expected Output Discussion:**
+- The output matrix will have rows for each document and columns for each unique term.
+- Terms specific to fewer documents, like "Gigafactory" and "iPhone," will have higher TF-IDF scores.
+- Common terms across many documents will have lower TF-IDF scores.
+
+**Additional Considerations:**
+- **Normalization:**
+  - TF-IDF normalization ensures that longer documents do not have an unfair advantage over shorter ones.
+
+- **Application:**
+  - TF-IDF is useful for improving document classification and information retrieval by focusing on more meaningful terms.
+
+- **Learning Variants:**
+  - Note that different libraries or applications might use slight variations of the TF-IDF formula. It’s good practice to refer to the specific documentation or implementations you are working with.
+
+By incorporating both TF and IDF, TF-IDF provides a balanced measure of term importance, helping to improve text classification and other NLP tasks.
