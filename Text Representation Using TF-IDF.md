@@ -89,9 +89,7 @@ print(tfidf_vectorizer.get_feature_names_out())
    - IDF measures the importance of a term by considering how often it appears across all documents.
    - Terms that appear in many documents are less informative and should be given a lower weight.
    - The formula for IDF is:
-     \[
-     \text{IDF}(t) = \log \left(\frac{N}{\text{DF}(t)}\right)
-     \]
+    ![](Inverse Document Frequency.png)
      where \( N \) is the total number of documents, and \(\text{DF}(t)\) is the number of documents containing the term \( t \).
 
 **Scoring Mechanism:**
