@@ -90,9 +90,9 @@ print(tfidf_vectorizer.get_feature_names_out())
    - Terms that appear in many documents are less informative and should be given a lower weight.
    - The formula for IDF is:
      
-   ```
+
      ![IDF Formula](4.png)
-   ```
+ 
 
 
      where \( N \) is the total number of documents, and \(\text{DF}(t)\) is the number of documents containing the term \( t \).
@@ -100,9 +100,9 @@ print(tfidf_vectorizer.get_feature_names_out())
 **Scoring Mechanism:**
 - **TF-IDF Score:** 
   - The TF-IDF score for a term in a document is calculated as:
- ```
+
   ![TF-IDF Score](6.png)
-```
+
    
 
 
@@ -113,9 +113,8 @@ print(tfidf_vectorizer.get_feature_names_out())
    - If the term "iphone" appears in 2 documents out of 4, \(\text{DF}(\text{iphone}) = 2\).
 
 2. **IDF Calculation:**
- ```
+
  ![gigafactory](5.png)`
-```
 
 
 
@@ -165,9 +164,9 @@ print(tfidf_vectorizer.get_feature_names_out())
 
 **Inverse Document Frequency (IDF) Recap:**
 - **IDF Formula:**
-```
+
  ![IDF Formula](7.png)
-```
+
 
 
   where \( N \) is the total number of documents and \(\text{DF}(t)\) is the number of documents containing the term \( t \).
@@ -177,18 +176,17 @@ print(tfidf_vectorizer.get_feature_names_out())
 
 **Term Frequency (TF):**
 - **Term Frequency Formula:**
-```
+
   ![Term Frequency Formula](8.png)
-```
 
 
   - This normalizes the term frequency by considering the length of the document.
 
 **Combining TF and IDF:**
 - **TF-IDF Formula:**
-```
+
  ![TF-IDF Formula](9.png)
-```
+
 
 
   - TF-IDF combines term frequency and inverse document frequency to score the importance of a term in a document relative to a corpus.
