@@ -273,6 +273,7 @@ print(tfidf_vectorizer.get_feature_names_out())
 
   **Example:**
   - If the term "computer" appears one million times, the log transformation reduces the influence of this term to a more manageable value.
+    
   ![ Logarithm function properties](13.png)
 
 **Limitations of TF-IDF:**
