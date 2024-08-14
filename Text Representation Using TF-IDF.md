@@ -90,7 +90,7 @@ print(tfidf_vectorizer.get_feature_names_out())
    - Terms that appear in many documents are less informative and should be given a lower weight.
    - The formula for IDF is:
      
-    ![Alt text](./Inverse Document Frequency.png)
+    ![IDF Formula](4.png)
 
 
      where \( N \) is the total number of documents, and \(\text{DF}(t)\) is the number of documents containing the term \( t \).
