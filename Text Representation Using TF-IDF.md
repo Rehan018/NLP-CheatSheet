@@ -624,7 +624,7 @@ print(tfidf_matrix[:, term_index].toarray())
 ```
 ### **E-Commerce Text Classification Using TF-IDF**
 
-In this section, we will explore how to use TF-IDF for text classification with an e-commerce dataset. This will involve reading the dataset, preprocessing the text, and using TF-IDF features for classification. Here’s how you can do it step-by-step:
+In this section, we will explore how to use TF-IDF for text classification with an e-commerce dataset. This will involve reading the dataset, preprocessing the text, and using TF-IDF features for classification.
 
 **1. **Load the Dataset:**
    - First, import the necessary libraries and load your CSV file containing the e-commerce item descriptions and their categories.
@@ -634,8 +634,6 @@ import pandas as pd
 
 # Load the dataset
 df = pd.read_csv('ecommerce_data.csv')
-
-# Print the shape and first few rows of the dataset
 print("Dataset Shape:", df.shape)
 print("First Few Rows:")
 print(df.head())
@@ -673,11 +671,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y_encoded, test_size=0.3,
 
 # Initialize TF-IDF Vectorizer
 tfidf_vectorizer = TfidfVectorizer(smooth_idf=True, use_idf=True)
-
-# Fit and transform the training data
 X_train_tfidf = tfidf_vectorizer.fit_transform(X_train)
-
-# Transform the test data
 X_test_tfidf = tfidf_vectorizer.transform(X_test)
 ```
 
