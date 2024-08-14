@@ -190,7 +190,70 @@ print(tfidf_matrix.toarray())
 print("Feature Names:")
 print(tfidf_vectorizer.get_feature_names_out())
 ```
+**Output**
+```
+Output:
 
+TF-IDF Matrix:
+[[0.39505606 0.         0.39505606 0.         0.         0.
+  0.         0.         0.         0.         0.         0.39505606
+  0.39505606 0.         0.         0.25215917 0.39505606 0.
+  0.         0.         0.         0.         0.         0.39505606]
+ [0.         0.40726515 0.         0.40726515 0.         0.
+  0.40726515 0.40726515 0.         0.         0.         0.
+  0.         0.         0.40726515 0.25995207 0.         0.
+  0.         0.         0.         0.         0.32109252 0.        ]
+ [0.         0.         0.         0.         0.38861429 0.
+  0.         0.         0.30638797 0.         0.         0.
+  0.         0.38861429 0.         0.         0.         0.38861429
+  0.38861429 0.         0.38861429 0.38861429 0.         0.        ]
+ [0.         0.         0.         0.         0.         0.42068099
+  0.         0.         0.33166972 0.42068099 0.42068099 0.
+  0.         0.         0.         0.26851522 0.         0.
+  0.         0.42068099 0.         0.         0.33166972 0.        ]]
+Feature Names:
+['and' 'announces' 'apple' 'ceo' 'companies' 'developments' 'elon'
+ 'gigafactory' 'in' 'interest' 'investors' 'iphone' 'itunes' 'market'
+ 'musk' 'new' 'releases' 'rise' 'sees' 'show' 'stock' 'tech' 'tesla'
+ 'update']
+```
+
+### **TF-IDF Matrix:**
+
+|               | and    | announces | apple  | ceo    | companies | developments | elon   | gigafactory | in     | interest | investors | iphone | itunes | market | musk  | new    | releases | rise  | sees  | show  | stock | tech  | tesla | update |
+|---------------|--------|-----------|--------|--------|-----------|--------------|--------|-------------|--------|----------|-----------|--------|--------|--------|-------|--------|----------|-------|-------|-------|-------|-------|-------|--------|
+| **Document 1** | 0.3951 | 0.0000    | 0.3951 | 0.0000 | 0.0000    | 0.0000       | 0.0000 | 0.0000      | 0.0000 | 0.0000   | 0.0000    | 0.3951 | 0.3951 | 0.0000 | 0.0000| 0.2522 | 0.3951   | 0.0000| 0.0000| 0.0000| 0.0000| 0.0000| 0.3951| 0.0000 |
+| **Document 2** | 0.0000 | 0.4073    | 0.0000 | 0.4073 | 0.0000    | 0.0000       | 0.4073 | 0.4073      | 0.0000 | 0.0000   | 0.0000    | 0.0000 | 0.0000 | 0.0000 | 0.4073| 0.2600 | 0.0000   | 0.0000| 0.0000| 0.0000| 0.0000| 0.0000| 0.3211| 0.0000 |
+| **Document 3** | 0.0000 | 0.0000    | 0.0000 | 0.0000 | 0.3886    | 0.0000       | 0.0000 | 0.0000      | 0.3064 | 0.0000   | 0.0000    | 0.0000 | 0.0000 | 0.3886 | 0.0000| 0.0000 | 0.0000   | 0.3886| 0.3886| 0.0000| 0.3886| 0.3886| 0.0000| 0.0000 |
+| **Document 4** | 0.0000 | 0.0000    | 0.0000 | 0.0000 | 0.0000    | 0.4207       | 0.0000 | 0.0000      | 0.3317 | 0.4207   | 0.4207    | 0.0000 | 0.0000 | 0.0000 | 0.0000| 0.2685 | 0.0000   | 0.0000| 0.0000| 0.4210| 0.0000| 0.0000| 0.3317| 0.0000 |
+
+### **Feature Names:**
+- **and**
+- **announces**
+- **apple**
+- **ceo**
+- **companies**
+- **developments**
+- **elon**
+- **gigafactory**
+- **in**
+- **interest**
+- **investors**
+- **iphone**
+- **itunes**
+- **market**
+- **musk**
+- **new**
+- **releases**
+- **rise**
+- **sees**
+- **show**
+- **stock**
+- **tech**
+- **tesla**
+- **update**
+
+This table makes it easier to compare the TF-IDF values across different documents for each feature (word).
 **Expected Output Discussion:**
 - The output matrix will show the TF-IDF scores for each term across documents.
 - Higher scores for less frequent terms and lower scores for terms that appear in many documents.
