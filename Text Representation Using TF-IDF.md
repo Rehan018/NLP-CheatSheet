@@ -157,9 +157,7 @@ print(tfidf_vectorizer.get_feature_names_out())
 
 **Inverse Document Frequency (IDF) Recap:**
 - **IDF Formula:**
-  \[
-  \text{IDF}(t) = \log \left(\frac{N}{\text{DF}(t)}\right)
-  \]
+ ![IDF Formula](7.png)
   where \( N \) is the total number of documents and \(\text{DF}(t)\) is the number of documents containing the term \( t \).
 
 - **Purpose of Logarithm:**
@@ -167,24 +165,18 @@ print(tfidf_vectorizer.get_feature_names_out())
 
 **Term Frequency (TF):**
 - **Term Frequency Formula:**
-  \[
-  \text{TF}(t, d) = \frac{\text{Number of times term } t \text{ appears in document } d}{\text{Total number of terms in document } d}
-  \]
+  ![Term Frequency Formula](8.png)
   - This normalizes the term frequency by considering the length of the document.
 
 **Combining TF and IDF:**
 - **TF-IDF Formula:**
-  \[
-  \text{TF-IDF}(t, d) = \text{TF}(t, d) \times \text{IDF}(t)
-  \]
+ ![TF-IDF Formula](9.png)
   - TF-IDF combines term frequency and inverse document frequency to score the importance of a term in a document relative to a corpus.
 
 **Example Calculation:**
 1. **TF Calculation:**
    - If the term "market" appears 48 times in a 1000-word article:
-     \[
-     \text{TF}(\text{market}, \text{article}) = \frac{48}{1000} = 0.048
-     \]
+   ![TF Calculation](10.png)
 
 2. **IDF Calculation:**
    - If "market" appears in 3 out of 4 documents:
