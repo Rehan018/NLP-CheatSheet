@@ -99,7 +99,7 @@ print(tfidf_vectorizer.get_feature_names_out())
 - **TF-IDF Score:** 
   - The TF-IDF score for a term in a document is calculated as:
    ![TF-IDF Score](6.png)
-    where \(\text{TF}(t, d)\) is the term frequency in document \( d \).
+   
 
 **Example Calculation:**
 
