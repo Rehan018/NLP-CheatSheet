@@ -39,18 +39,10 @@ corpus = [
     "Stock market sees a rise in tech companies.",
     "Investors show interest in Tesla's new developments."
 ]
-
-# Initialize the TF-IDF Vectorizer
 tfidf_vectorizer = TfidfVectorizer()
-
-# Fit and transform the corpus
 tfidf_matrix = tfidf_vectorizer.fit_transform(corpus)
-
-# Display the TF-IDF matrix
 print("TF-IDF Matrix:")
 print(tfidf_matrix.toarray())
-
-# Display feature names (words)
 print("Feature Names:")
 print(tfidf_vectorizer.get_feature_names_out())
 
@@ -133,17 +125,10 @@ corpus = [
     "Investors show interest in Tesla's new developments."
 ]
 
-# Initialize the TF-IDF Vectorizer
 tfidf_vectorizer = TfidfVectorizer()
-
-# Fit and transform the corpus
 tfidf_matrix = tfidf_vectorizer.fit_transform(corpus)
-
-# Display the TF-IDF matrix
 print("TF-IDF Matrix:")
 print(tfidf_matrix.toarray())
-
-# Display feature names (words)
 print("Feature Names:")
 print(tfidf_vectorizer.get_feature_names_out())
 ```
@@ -225,17 +210,10 @@ corpus = [
     "Investors show interest in Tesla's new developments."
 ]
 
-# Initialize the TF-IDF Vectorizer
 tfidf_vectorizer = TfidfVectorizer()
-
-# Fit and transform the corpus
 tfidf_matrix = tfidf_vectorizer.fit_transform(corpus)
-
-# Display the TF-IDF matrix
 print("TF-IDF Matrix:")
 print(tfidf_matrix.toarray())
-
-# Display feature names (words)
 print("Feature Names:")
 print(tfidf_vectorizer.get_feature_names_out())
 ```
@@ -304,18 +282,10 @@ corpus = [
     "Stock market sees a rise in tech companies.",
     "Investors show interest in Tesla's new developments."
 ]
-
-# Initialize the TF-IDF Vectorizer with parameters to handle zero division
 tfidf_vectorizer = TfidfVectorizer(smooth_idf=True, use_idf=True)
-
-# Fit and transform the corpus
 tfidf_matrix = tfidf_vectorizer.fit_transform(corpus)
-
-# Display the TF-IDF matrix
 print("TF-IDF Matrix:")
 print(tfidf_matrix.toarray())
-
-# Display feature names (words)
 print("Feature Names:")
 print(tfidf_vectorizer.get_feature_names_out())
 ```
@@ -347,8 +317,6 @@ corpus = [
     "Stock market sees a rise in tech companies.",
     "Investors show interest in Tesla's new developments."
 ]
-
-# Initialize the TF-IDF Vectorizer
 tfidf_vectorizer = TfidfVectorizer(smooth_idf=True, use_idf=True)
 ```
 
@@ -359,8 +327,6 @@ Use `fit_transform` to compute the TF-IDF scores and transform the text data int
 ```python
 # Fit and transform the corpus
 tfidf_matrix = tfidf_vectorizer.fit_transform(corpus)
-
-# Output the transformed TF-IDF matrix
 print("TF-IDF Matrix:")
 print(tfidf_matrix.toarray())
 ```
@@ -373,8 +339,6 @@ The vocabulary of the TF-IDF vectorizer is a dictionary mapping terms to indices
 # Print the vocabulary (terms to indices mapping)
 print("Vocabulary:")
 print(tfidf_vectorizer.vocabulary_)
-
-# Print feature names in order
 print("Feature Names:")
 print(tfidf_vectorizer.get_feature_names_out())
 ```
@@ -386,8 +350,6 @@ You can access the IDF scores directly from the vectorizer object. Here’s how 
 ```python
 # Get IDF scores
 idf_scores = tfidf_vectorizer.idf_
-
-# Print IDF scores
 print("IDF Scores:")
 for term, index in tfidf_vectorizer.vocabulary_.items():
     print(f"Term: {term}, IDF: {idf_scores[index]}")
@@ -413,11 +375,7 @@ corpus = [
     "Stock market sees a rise in tech companies.",
     "Investors show interest in Tesla's new developments."
 ]
-
-# Initialize the TF-IDF Vectorizer
 tfidf_vectorizer = TfidfVectorizer(smooth_idf=True, use_idf=True)
-
-# Fit and transform the corpus
 tfidf_matrix = tfidf_vectorizer.fit_transform(corpus)
 
 # Output the transformed TF-IDF matrix
@@ -427,15 +385,9 @@ print(tfidf_matrix.toarray())
 # Print the vocabulary (terms to indices mapping)
 print("Vocabulary:")
 print(tfidf_vectorizer.vocabulary_)
-
-# Print feature names in order
 print("Feature Names:")
 print(tfidf_vectorizer.get_feature_names_out())
-
-# Get IDF scores
 idf_scores = tfidf_vectorizer.idf_
-
-# Print IDF scores
 print("IDF Scores:")
 for term, index in tfidf_vectorizer.vocabulary_.items():
     print(f"Term: {term}, IDF: {idf_scores[index]}")
