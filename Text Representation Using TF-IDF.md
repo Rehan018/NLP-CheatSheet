@@ -27,7 +27,7 @@
 
 ### **Python Implementation of TF-IDF**
 
-Here's how you can implement the TF-IDF model using Python, specifically with the `TfidfVectorizer` from scikit-learn.
+the TF-IDF model using Python, specifically with the `TfidfVectorizer` from scikit-learn.
 
 ```python
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -46,9 +46,32 @@ print(tfidf_matrix.toarray())
 print("Feature Names:")
 print(tfidf_vectorizer.get_feature_names_out())
 
-# Expected Output
-# The output should show a matrix where each row corresponds to a document and each column to a word.
-# The values in the matrix represent the TF-IDF score of each word in the respective document.
+```
+
+**Output**
+TF-IDF Matrix:
+```
+[[0.39505606 0.         0.39505606 0.         0.         0.
+  0.         0.         0.         0.         0.         0.39505606
+  0.39505606 0.         0.         0.25215917 0.39505606 0.
+  0.         0.         0.         0.         0.         0.39505606]
+ [0.         0.40726515 0.         0.40726515 0.         0.
+  0.40726515 0.40726515 0.         0.         0.         0.
+  0.         0.         0.40726515 0.25995207 0.         0.
+  0.         0.         0.         0.         0.32109252 0.        ]
+ [0.         0.         0.         0.         0.38861429 0.
+  0.         0.         0.30638797 0.         0.         0.
+  0.         0.38861429 0.         0.         0.         0.38861429
+  0.38861429 0.         0.38861429 0.38861429 0.         0.        ]
+ [0.         0.         0.         0.         0.         0.42068099
+  0.         0.         0.33166972 0.42068099 0.42068099 0.
+  0.         0.         0.         0.26851522 0.         0.
+  0.         0.42068099 0.         0.         0.33166972 0.        ]]
+Feature Names:
+['and' 'announces' 'apple' 'ceo' 'companies' 'developments' 'elon'
+ 'gigafactory' 'in' 'interest' 'investors' 'iphone' 'itunes' 'market'
+ 'musk' 'new' 'releases' 'rise' 'sees' 'show' 'stock' 'tech' 'tesla'
+ 'update']
 ```
 
 **Expected Output Discussion:**
