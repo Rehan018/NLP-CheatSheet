@@ -2,18 +2,9 @@
 
 Bayes' Theorem is a fundamental theorem in probability theory that describes how to update the probability of a hypothesis based on new evidence. It’s widely used in various fields, including NLP, especially in classification problems.
 
-### **The Formula**
-Bayes' Theorem is mathematically expressed as:
 
-\[
-P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}
-\]
+![The Formula](14.png)
 
-Where:
-- **\( P(A|B) \)**: The posterior probability, or the probability of event A occurring given that B is true.
-- **\( P(B|A) \)**: The likelihood, or the probability of event B occurring given that A is true.
-- **\( P(A) \)**: The prior probability, or the initial probability of event A occurring.
-- **\( P(B) \)**: The marginal probability, or the probability of event B occurring.
 
 ### **Intuitive Explanation**
 Bayes' Theorem allows us to update our belief about the probability of an event (A) after considering new evidence (B).
