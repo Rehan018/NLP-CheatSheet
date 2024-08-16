@@ -29,13 +29,10 @@ import spacy
 # Load the large SpaCy model
 nlp = spacy.load('en_core_web_lg')
 
-# Define words to compare
 words = ["dog", "cat", "banana", "garbage"]
 
-# Process words and get vectors
 vectors = {word: nlp(word).vector for word in words}
 
-# Compare vectors
 for word, vector in vectors.items():
     print(f"Word: {word}")
     print(f"Vector: {vector[:10]}...")  # Print only the first 10 dimensions for brevity
@@ -71,10 +68,7 @@ import spacy
 # Load the large SpaCy model
 nlp = spacy.load('en_core_web_lg')
 
-# Define a sample text
 text = "dog cat banana garbage"
-
-# Process the text
 doc = nlp(text)
 
 # Print token attributes
@@ -108,10 +102,7 @@ import spacy
 # Load the large SpaCy model
 nlp = spacy.load('en_core_web_lg')
 
-# Define a sample text
 text = "dog cat banana"
-
-# Process the text
 doc = nlp(text)
 
 # Access and print the vector for the first token ("dog")
@@ -172,15 +163,9 @@ To calculate and print the similarity between tokens, you can use SpaCy's built-
 
 ```python
 import spacy
-
-# Load the large SpaCy model
 nlp = spacy.load('en_core_web_lg')
-
-# Define words for comparison
 base_word = "bread"
 words_to_compare = ["sandwich", "burger", "cat", "tiger", "human", "wheat"]
-
-# Process the base word and other words
 base_token = nlp(base_word)
 tokens = [nlp(word) for word in words_to_compare]
 
@@ -224,23 +209,18 @@ Here’s how to implement a function to compare word similarities:
 
 ```python
 import spacy
-
-# Load the large SpaCy model
 nlp = spacy.load('en_core_web_lg')
 
 def print_similarity(base_word, words_to_compare):
-    # Process the base word and create its token
     base_token = nlp(base_word)
     
-    # Process the words to compare
+
     tokens = [nlp(word) for word in words_to_compare]
-    
-    # Print similarity
+
     for token in tokens:
         similarity = base_token.similarity(token)
         print(f"Similarity between '{base_word}' and '{token.text}': {similarity:.2f}")
 
-# Example usage
 base_word = "iPhone"
 words_to_compare = ["apple", "Samsung", "dog", "kitten"]
 print_similarity(base_word, words_to_compare)
