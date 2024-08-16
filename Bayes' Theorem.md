@@ -23,12 +23,7 @@ Assume the following probabilities based on past data:
 - **\( P(B|A) \)**: Probability that the word "Discount" appears in a Spam email. (e.g., \( P(Discount | Spam) = 0.7 \))
 - **\( P(B) \)**: Probability that the word "Discount" appears in any email. (e.g., \( P(Discount) = 0.4 \))
 
-#### **Step 3: Apply Bayes' Theorem**
-We want to find the probability that an email is Spam given that it contains the word "Discount" (\( P(Spam | Discount) \)).
-
-\[
-P(Spam|Discount) = \frac{P(Discount|Spam) \cdot P(Spam)}{P(Discount)} = \frac{0.7 \cdot 0.3}{0.4} = 0.525
-\]
+![Apply Bayes' Theorem](15.png)
 
 So, the probability that an email is Spam given that it contains the word "Discount" is 52.5%.
 
@@ -62,31 +57,7 @@ Now, suppose a randomly selected bolt from the entire shipment is found to be de
 - **\( P(D|B) \)**: Probability that the bolt is defective given it is from Vendor B = 0.03
 - **\( P(D|C) \)**: Probability that the bolt is defective given it is from Vendor C = 0.05
 
-#### **Step 3: Calculate \( P(D) \)**
-The total probability that a bolt is defective, \( P(D) \), is calculated using the law of total probability:
-
-\[
-P(D) = P(D|A) \cdot P(A) + P(D|B) \cdot P(B) + P(D|C) \cdot P(C)
-\]
-
-\[
-P(D) = (0.02 \times 0.30) + (0.03 \times 0.40) + (0.05 \times 0.30)
-\]
-
-\[
-P(D) = 0.006 + 0.012 + 0.015 = 0.033
-\]
-
-#### **Step 4: Apply Bayes' Theorem**
-We now calculate the probability that the defective bolt is from Vendor A:
-
-\[
-P(A|D) = \frac{P(D|A) \cdot P(A)}{P(D)}
-\]
-
-\[
-P(A|D) = \frac{0.02 \times 0.30}{0.033} = \frac{0.006}{0.033} \approx 0.1818
-\]
+![ Calculate \( P(D) \)](16.png)
 
 So, the probability that a defective bolt came from Vendor A is approximately **18.18%**.
 
