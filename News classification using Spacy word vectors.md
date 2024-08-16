@@ -46,10 +46,7 @@ Machine learning models work better with numerical data, so we convert the 'labe
 
 **Example Code:**
 ```python
-# Map text labels to numerical values
 df['label_num'] = df['label'].map({'fake': 0, 'real': 1})
-
-# Show the updated DataFrame
 print(df.head())
 ```
 
@@ -72,13 +69,9 @@ import spacy
 
 # Load the SpaCy large model
 nlp = spacy.load('en_core_web_lg')
-
-# Function to convert text to word vector
 def get_word_vector(text):
     doc = nlp(text)
     return doc.vector
-
-# Apply the function to the text column
 df['word_vector'] = df['text'].apply(get_word_vector)
 
 # Show the DataFrame with word vectors
@@ -111,8 +104,6 @@ import spacy
 
 # Load the SpaCy large model
 nlp = spacy.load('en_core_web_lg')
-
-# Function to convert text to word vector
 def text_to_vector(text):
     doc = nlp(text)
     return doc.vector
