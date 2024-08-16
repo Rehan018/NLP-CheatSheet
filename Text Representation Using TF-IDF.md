@@ -174,8 +174,6 @@ Here’s how you can calculate TF-IDF using Python:
 
 ```python
 from sklearn.feature_extraction.text import TfidfVectorizer
-
-# Sample corpus of news articles
 corpus = [
     "Apple releases new iPhone and iTunes update.",
     "Tesla CEO Elon Musk announces new Gigafactory.",
@@ -322,8 +320,6 @@ Here’s how you can compute TF-IDF using Python:
 
 ```python
 from sklearn.feature_extraction.text import TfidfVectorizer
-
-# Sample corpus of news articles
 corpus = [
     "Apple releases new iPhone and iTunes update.",
     "Tesla CEO Elon Musk announces new Gigafactory.",
@@ -395,8 +391,6 @@ Here’s a complete example to illustrate TF-IDF calculation using Python:
 
 ```python
 from sklearn.feature_extraction.text import TfidfVectorizer
-
-# Sample corpus of news articles
 corpus = [
     "Apple releases new iPhone and iTunes update.",
     "Tesla CEO Elon Musk announces new Gigafactory.",
@@ -430,8 +424,6 @@ First, you'll import the necessary library and create an instance of the `TfidfV
 
 ```python
 from sklearn.feature_extraction.text import TfidfVectorizer
-
-# Sample corpus of dummy sentences
 corpus = [
     "Apple releases new iPhone and iTunes update.",
     "Tesla CEO Elon Musk announces new Gigafactory.",
@@ -488,8 +480,6 @@ Here’s the complete code for executing these steps:
 
 ```python
 from sklearn.feature_extraction.text import TfidfVectorizer
-
-# Sample corpus of dummy sentences
 corpus = [
     "Apple releases new iPhone and iTunes update.",
     "Tesla CEO Elon Musk announces new Gigafactory.",
@@ -502,8 +492,6 @@ tfidf_matrix = tfidf_vectorizer.fit_transform(corpus)
 # Output the transformed TF-IDF matrix
 print("TF-IDF Matrix:")
 print(tfidf_matrix.toarray())
-
-# Print the vocabulary (terms to indices mapping)
 print("Vocabulary:")
 print(tfidf_vectorizer.vocabulary_)
 print("Feature Names:")
@@ -533,15 +521,12 @@ for term, index in tfidf_vectorizer.vocabulary_.items():
 To check and verify the TF-IDF scores for specific terms, you can use the term’s index in the transformed output matrix:
 
 ```python
-# Print TF-IDF vectors for the first two sentences
 print("TF-IDF Vectors for First Two Sentences:")
-print(tfidf_matrix.toarray()[:2])  # Prints TF-IDF vectors for the first two sentences
+print(tfidf_matrix.toarray()[:2])
 
-# Check the position of specific terms, e.g., 'is'
 term_index = tfidf_vectorizer.vocabulary_.get('is')
 print(f"Index of 'is': {term_index}")
 
-# Print TF-IDF scores for term 'is' in each document
 print("TF-IDF Scores for 'is':")
 print(tfidf_matrix[:, term_index].toarray())
 ```
@@ -587,30 +572,19 @@ Here's the complete code snippet to demonstrate these steps:
 
 ```python
 from sklearn.feature_extraction.text import TfidfVectorizer
-
-# Sample corpus
 corpus = [
     "Apple releases new iPhone and iTunes update.",
     "Tesla CEO Elon Musk announces new Gigafactory.",
     "Stock market sees a rise in tech companies.",
     "Investors show interest in Tesla's new developments."
 ]
-
-# Initialize TF-IDF Vectorizer
 tfidf_vectorizer = TfidfVectorizer(smooth_idf=True, use_idf=True)
-
-# Fit and transform the corpus
 tfidf_matrix = tfidf_vectorizer.fit_transform(corpus)
-
-# Get IDF scores
 idf_scores = tfidf_vectorizer.idf_
-
-# Print IDF scores for each term
 print("IDF Scores:")
 for term, index in tfidf_vectorizer.vocabulary_.items():
     print(f"Term: {term}, IDF: {idf_scores[index]}")
 
-# Print TF-IDF vectors for the first two sentences
 print("TF-IDF Vectors for First Two Sentences:")
 print(tfidf_matrix.toarray()[:2])  # First two rows of the matrix
 
@@ -618,7 +592,7 @@ print(tfidf_matrix.toarray()[:2])  # First two rows of the matrix
 term_index = tfidf_vectorizer.vocabulary_.get('is')
 print(f"Index of 'is': {term_index}")
 
-# Print TF-IDF scores for term 'is' in each document
+
 print("TF-IDF Scores for 'is':")
 print(tfidf_matrix[:, term_index].toarray())
 ```
@@ -632,7 +606,6 @@ In this section, we will explore how to use TF-IDF for text classification with 
 ```python
 import pandas as pd
 
-# Load the dataset
 df = pd.read_csv('ecommerce_data.csv')
 print("Dataset Shape:", df.shape)
 print("First Few Rows:")
@@ -643,7 +616,6 @@ print(df.head())
    - Check for class imbalance and other potential issues in the dataset.
 
 ```python
-# Check for class imbalance
 print("Class Distribution:")
 print(df['category'].value_counts())
 ```
@@ -658,18 +630,14 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report
 
-# Extract text and labels
 X = df['description']
 y = df['category']
 
-# Encode the labels
 label_encoder = LabelEncoder()
 y_encoded = label_encoder.fit_transform(y)
 
-# Split the data into training and test sets
 X_train, X_test, y_train, y_test = train_test_split(X, y_encoded, test_size=0.3, random_state=42)
 
-# Initialize TF-IDF Vectorizer
 tfidf_vectorizer = TfidfVectorizer(smooth_idf=True, use_idf=True)
 X_train_tfidf = tfidf_vectorizer.fit_transform(X_train)
 X_test_tfidf = tfidf_vectorizer.transform(X_test)
@@ -683,10 +651,8 @@ X_test_tfidf = tfidf_vectorizer.transform(X_test)
 model = LogisticRegression(max_iter=1000)
 model.fit(X_train_tfidf, y_train)
 
-# Predict on the test set
 y_pred = model.predict(X_test_tfidf)
 
-# Evaluate the model
 print("Classification Report:")
 print(classification_report(y_test, y_pred, target_names=label_encoder.classes_))
 ```
@@ -751,7 +717,7 @@ category_mapping = {
     'clothing': 3
 }
 
-# Map categories to numbers
+
 df['label_number'] = df['category'].map(category_mapping)
 
 # Check the dataframe
@@ -764,14 +730,11 @@ print(df.head())
 ```python
 from sklearn.model_selection import train_test_split
 
-# Define features and target variable
 X = df['description']
 y = df['label_number']
 
-# Split the dataset
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
 
-# Check the shapes of the splits
 print("Training data shape:", X_train.shape)
 print("Test data shape:", X_test.shape)
 print("Training labels distribution:")
@@ -786,13 +749,10 @@ print(y_test.value_counts())
 ```python
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-# Initialize TF-IDF Vectorizer
 tfidf_vectorizer = TfidfVectorizer()
 
-# Fit and transform training data
 X_train_tfidf = tfidf_vectorizer.fit_transform(X_train)
 
-# Transform test data
 X_test_tfidf = tfidf_vectorizer.transform(X_test)
 ```
 
@@ -805,7 +765,6 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import classification_report
 
-# Initialize classifiers
 knn = KNeighborsClassifier(n_neighbors=5)
 rf = RandomForestClassifier(n_estimators=100, random_state=42)
 nb = MultinomialNB()
