@@ -47,25 +47,6 @@ Imagine a Venn diagram where one circle represents all Spam emails (Event A), an
 
 To provide a more detailed and accurate visualization, I can create a graph or diagram illustrating Bayes' Theorem with the example above. Would you like me to generate that for you?
 
-
-
-### **Bayes' Theorem: Explanation and Example**
-
-**Bayes' Theorem** is a powerful mathematical tool used to calculate conditional probabilities. It allows us to update the probability of a hypothesis based on new evidence.
-
-#### **The Formula**
-Bayes' Theorem is given by:
-
-\[
-P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}
-\]
-
-Where:
-- **\( P(A|B) \)**: The probability of event A occurring given that B is true (posterior probability).
-- **\( P(B|A) \)**: The probability of event B occurring given that A is true (likelihood).
-- **\( P(A) \)**: The probability of event A occurring independently of B (prior probability).
-- **\( P(B) \)**: The probability of event B occurring (marginal probability).
-
 ### **Example: Defective Products from Different Vendors**
 
 Consider a company that orders bolts from three different vendors: A, B, and C. The company orders:
