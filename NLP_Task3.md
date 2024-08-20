@@ -5,20 +5,7 @@ Text classification is a natural language processing (NLP) task that involves ca
 
 ---
 
-### Real-Life Use Case: Camtasia Support Forum
 
-**Context:**
-Imagine a scenario where users report bugs or issues with the Camtasia Studio software on their support forum. The company (TechSmith) receives numerous complaints daily, and they need to prioritize these complaints based on their severity (high, medium, low).
-
-**Example Complaints:**
-1. "Camtasia 10 won't import MP4 files."
-2. "I can't find a video tutorial."
-
-**Classification Objective:**
-- Complaint 1: High Severity
-- Complaint 2: Low Severity
-
----
 
 ### Process of Text Classification
 
