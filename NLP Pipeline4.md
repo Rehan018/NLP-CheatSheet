@@ -10,12 +10,6 @@
 
 These steps together form what is known as the **NLP pipeline**.
 
-### 2. Use Case: Camtasia Support Ticket System
-**Example: Camtasia's Support Ticket System**
-- **Camtasia:** A video recording software with a support ticket system.
-- **Problem:** Prioritizing tickets manually can be challenging due to high volume.
-- **Solution:** An NLP system that analyzes ticket text to determine priority (high, medium, low).
-
 ### 3. Step 1: Data Acquisition
 - **Data Sources:** Internal databases (e.g., MongoDB) or public datasets.
 - **Example:** Camtasia stores support tickets in MongoDB.
